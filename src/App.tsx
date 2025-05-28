@@ -1,7 +1,15 @@
-import Signin from "./features/auth/Signin";
+import MainLayout from "./components/layouts/MainLayout";
 
 export default function App(){
   return <div>
-    <Signin/>
+    <MainLayout children={<Test/>}/>
   </div>
+}
+
+function Test() {
+  return (
+    <div>
+      test
+    </div>
+  )
 }
