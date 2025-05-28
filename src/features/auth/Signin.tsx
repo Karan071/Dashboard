@@ -15,8 +15,8 @@ export default function Signin({
     ...props
 }: React.ComponentPropsWithoutRef<"div">) {
     return (
-        <div className={cn("flex flex-col gap-6", className)} {...props}>
-            <Card>
+        <div className={cn("flex flex-col gap-6 justify-center items-center min-h-screen", className)} {...props}>
+            <Card className="w-full max-w-xl mx-auto">
                 <CardHeader>
                     <CardTitle className="text-2xl">Login</CardTitle>
                     <CardDescription>
