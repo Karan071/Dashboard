@@ -5,18 +5,18 @@
 // import { Button } from "@/components/ui/button"
 // import { Checkbox } from "@/components/ui/checkbox"
 // import { Badge } from "@/components/ui/badge"
-// import type { User } from "@/components/dashboard-page"
-// import { useNavigate } from "react-router-dom"
+// // import type { User } from "@/components/dashboard-page"
+// // import { useNavigate } from "react-router-dom"
 // import { mockUsers } from "@/Data"
 
-// interface ExplorerTableProps {
-//     onViewUser: (user: User) => void;
-// }
+// // interface ExplorerTableProps {
+// //     onViewUser: (user: User) => void;
+// // }
 
-// export function ExplorerTable({ onViewUser }: ExplorerTableProps) {
+// export function ExplorerTable() {
 //     const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
 //     const [currentPage, setCurrentPage] = useState(1);
-//     const navigate = useNavigate();
+//     // const navigate = useNavigate();
 //     const recordsPerPage = 5
 
 //     // Calculate pagination data
@@ -42,7 +42,7 @@
 //     }
 
 //     return (
-//         <div className="rounded-md border bg-white">
+//         <div className="rounded-md border bg-white p-5">
 //             <div className="flex items-center justify-between border-b p-4">
 //                 <div className="flex items-center gap-2">
 //                     <Checkbox
@@ -155,7 +155,7 @@
 //                                         <Button
 //                                             variant="ghost"
 //                                             size="icon"
-//                                             onClick={() => navigate(`/user-details/${user.id}`)}
+//                                             // onClick={() => navigate(`/user-details/${user.id}`)}
 //                                         >
 //                                             <Eye className="h-4 w-4" />
 //                                             <span className="sr-only">View</span>
