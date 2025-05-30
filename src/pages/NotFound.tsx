@@ -11,7 +11,7 @@ export default function NotFound() {
     }, [location.pathname]);
 
     return (
-        <div className="flex items-center justify-center  w-full">
+        <div className="flex items-center justify-center w-full mt-50">
             <div className="flex flex-col justify-center items-center text-center p-8 w-full">
                 <h1 className="text-9xl font-bold text-gray-800 mb-6">404</h1>
                 <p className="text-2xl text-gray-600 mb-8">Oops! Page not found</p>

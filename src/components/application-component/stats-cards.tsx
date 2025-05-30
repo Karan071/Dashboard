@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, UserCheck, UserPlus, MessageSquare, Calendar, ClipboardCheck } from "lucide-react"
 
-export function StatsCards() {
+export default function StatsCards() {
   const stats = [
     {
       title: "Total Users",
@@ -25,13 +25,6 @@ export function StatsCards() {
       bgColor: "bg-purple-100",
     },
     {
-      title: "New Signups (This Month)",
-      value: "1,038",
-      icon: UserPlus,
-      color: "text-indigo-500",
-      bgColor: "bg-indigo-100",
-    },
-    {
       title: "Total Enquiries",
       value: "642",
       icon: MessageSquare,
@@ -45,17 +38,10 @@ export function StatsCards() {
       color: "text-pink-500",
       bgColor: "bg-pink-100",
     },
-    {
-      title: "Users Completed ACE Test",
-      value: "3,785",
-      icon: ClipboardCheck,
-      color: "text-teal-500",
-      bgColor: "bg-teal-100",
-    },
   ]
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 p-5">
       {stats.map((stat, index) => (
         <Card key={index}>
           <CardHeader className="flex flex-row items-center justify-between">

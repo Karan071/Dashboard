@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const SidebarItems = [
     {
-        title: "User's",
+        title: "Users",
         items: [
             { content: "Explorers", url: "/explorers" },
             { content: "Coaches", url: "/coaches" },
@@ -76,6 +76,16 @@ const SidebarItems = [
         isActive: true,
     },
     {
+        title: "Finance",
+        items : [
+            { content: "Payments", url: "/payments" },
+            { content: "Payout", url: "/payouts" },
+            { content: "P&L", url: "/pl" },
+            { content: "Reports", url: "/reports" },
+        ],
+        isActive: true,
+    },
+    {
         title: "Push Notifications",
         items: [
             { content: "Web / App", url: "/notifications-web" },
@@ -109,7 +119,7 @@ export default function UISidebar() {
                             <Collapsible
                                 open={openSection === x.title}
                                 onOpenChange={() => handleSectionToggle(x.title)}
-                                className="group/collapsible"
+                                className={`group/collapsible ${!x.isActive ? 'opacity-50 pointer-events-none' : ''}`}
                             >
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild>
@@ -139,7 +149,28 @@ export default function UISidebar() {
                     ))}
                 </SidebarContent>
 
-                {/* <SidebarContent className="px-2 py-4 ">
+
+                <SidebarFooter className="border-t-1 p-4">
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton>
+                                <HelpCircle />
+                                <span>Help & Support</span>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton>
+                                <LogOut />
+                                <span>Logout</span>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarFooter>
+            </Sidebar>
+        </div>
+    );
+}
+{/* <SidebarContent className="px-2 py-4 ">
                     <SidebarMenu>
                         <Collapsible
                             open={openSection === 'users'}
@@ -428,6 +459,7 @@ export default function UISidebar() {
                                 </CollapsibleContent>
                             </SidebarMenuItem>
                         </Collapsible>
+                        }       
                     </SidebarMenu>
                     
                     <SidebarMenu>
@@ -446,6 +478,7 @@ export default function UISidebar() {
                                     </CollapsibleTrigger>
                                 </SidebarMenuButton>
                                 <CollapsibleContent>
+                                        </SidebarMenuItem>
                                     <div className="pl-6">
                                         <SidebarMenuItem>
                                             <SidebarMenuButton>
@@ -471,7 +504,6 @@ export default function UISidebar() {
                                             <SidebarMenuButton>
                                                 <span>Abuses</span>
                                             </SidebarMenuButton>
-                                        </SidebarMenuItem>
                                     </div>
                                 </CollapsibleContent>
                             </SidebarMenuItem>
@@ -521,24 +553,3 @@ export default function UISidebar() {
                         </Collapsible>
                     </SidebarMenu>
                 </SidebarContent> */}
-
-                <SidebarFooter className="border-t-1 p-4">
-                    <SidebarMenu>
-                        <SidebarMenuItem>
-                            <SidebarMenuButton>
-                                <HelpCircle />
-                                <span>Help & Support</span>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                        <SidebarMenuItem>
-                            <SidebarMenuButton>
-                                <LogOut />
-                                <span>Logout</span>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                    </SidebarMenu>
-                </SidebarFooter>
-            </Sidebar>
-        </div>
-    );
-}       
