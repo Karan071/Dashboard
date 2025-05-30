@@ -1,18 +1,3 @@
-// import { SidebarProvider } from "@/components/ui/sidebar";
-// import UISidebar from "./Sidebar";
-// import Navbar from "@/components/layouts/Navbar"
-// export default function MainLayout({ children }: { children: React.ReactNode }) {
-//     return (
-//         <SidebarProvider>
-//             <UISidebar />
-//             <Navbar />
-//             <main>
-//                 {children}
-//             </main>
-
-//         </SidebarProvider>
-//     )
-// }
 import { SidebarProvider } from "@/components/ui/sidebar";
 import UISidebar from "./Sidebar";
 import Navbar from "@/components/layouts/Navbar";
@@ -20,16 +5,14 @@ import Navbar from "@/components/layouts/Navbar";
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     return (
         <SidebarProvider>
-            
-            <div className="flex">
+            <div className="flex h-screen w-screen">
                 <UISidebar />
-                <div className="flex flex-col">
+                <div className="flex flex-col overflow-auto flex-1">
                     <Navbar />
-                    <main className="w-screen p-4">
+                    <main className="flex-1 overflow-auto p-6 w-full">
                         <div className="mt-20">
                             {children}
                         </div>
-
                     </main>
                 </div>
             </div>

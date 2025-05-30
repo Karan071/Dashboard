@@ -10,6 +10,11 @@ function Test() {
   return (
     <div>
       <StatsCards/>
+      <StatsCards/>
+      <StatsCards/>
+      <StatsCards/>
+      <StatsCards/>
+      <StatsCards/> 
     </div>
   )
 }

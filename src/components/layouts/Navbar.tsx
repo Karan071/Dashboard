@@ -8,7 +8,7 @@ import logoPicture from "@/assets/icons4.jpeg";
 
 export default function Navbar() {
     return (
-        <header className="absolute top-0 flex h-16 items-center justify-between border-b bg-white px-6 dark:bg-gray-800 w-full overflow-hidden">
+        <header className="flex h-14 items-center justify-between border-b bg-white px-6 dark:bg-gray-800 w-auto overflow-hidden">
             <div className="flex items-center lg:hidden pr-2">
                 <SidebarTrigger className="inline-flex justify-center items-center "/>
             </div>
