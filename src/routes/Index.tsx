@@ -9,6 +9,7 @@ export default function AppRoutes() {
             {/* <Route path="/" element={<CmsInsights />} />
             <Route path="/insights" element={<CmsInsights />} />
             <Route path="/videos" element={<VideoLibrary />} /> */}
+            
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
         </Routes>
