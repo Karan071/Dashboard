@@ -18,13 +18,9 @@ const SidebarItems = [
     },
     {
         title: "Approvals",
-        items: [
-            { content: "Coache's Profiles", url: "/coaches-profiles" },
-            { content: "Organisations Profiles", url: "/organisations-profiles" },
-            { content: "Google Map Listings", url: "/map-listings" },
-            { content: "Forms Data", url: "/forms-data" },
-        ],
-        isActive: true,
+        url: "/approvals",
+        isSingleLink: true,
+        isActive: true
     },
     {
         title: "Products",
@@ -77,7 +73,7 @@ const SidebarItems = [
     },
     {
         title: "Finance",
-        items : [
+        items: [
             { content: "Payments", url: "/payments" },
             { content: "Payout", url: "/payouts" },
             { content: "P&L", url: "/pl" },
@@ -116,35 +112,45 @@ export default function UISidebar() {
                 <SidebarContent className="mt-4">
                     {SidebarItems.map((x) => (
                         <SidebarMenu key={x.title}>
-                            <Collapsible
-                                open={openSection === x.title}
-                                onOpenChange={() => handleSectionToggle(x.title)}
-                                className={`group/collapsible ${!x.isActive ? 'opacity-50 pointer-events-none' : ''}`}
-                            >
+                            {x.isSingleLink ? (
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild>
-                                        <CollapsibleTrigger className="w-full">
-                                            <div className="flex items-center justify-between w-full ml-4">
-                                                <span>{x.title}</span>
-                                                <ChevronDown className="mr-2 h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                                            </div>
-                                        </CollapsibleTrigger>
+                                        <Link to={x.url} className="block py-2 hover:bg-gray-100 rounded-md px-2">
+                                            <span className="ml-4">{x.title}</span>
+                                        </Link>
                                     </SidebarMenuButton>
-                                    <CollapsibleContent>
-                                        <div className="pl-6">
-                                            {x.items.map((item) => (
-                                                <SidebarMenuItem key={item.content}>
-                                                    <SidebarMenuButton asChild>
-                                                        <Link to={item.url} className="block py-2 hover:bg-gray-100 rounded-md px-2">
-                                                            {item.content}
-                                                        </Link>
-                                                    </SidebarMenuButton>
-                                                </SidebarMenuItem>
-                                            ))}
-                                        </div>
-                                    </CollapsibleContent>
                                 </SidebarMenuItem>
-                            </Collapsible>
+                            ) : (
+                                <Collapsible
+                                    open={openSection === x.title}
+                                    onOpenChange={() => handleSectionToggle(x.title)}
+                                    className={`group/collapsible ${!x.isActive ? 'opacity-50 pointer-events-none' : ''}`}
+                                >
+                                    <SidebarMenuItem>
+                                        <SidebarMenuButton asChild>
+                                            <CollapsibleTrigger className="w-full">
+                                                <div className="flex items-center justify-between w-full ml-4">
+                                                    <span>{x.title}</span>
+                                                    <ChevronDown className="mr-2 h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                                                </div>
+                                            </CollapsibleTrigger>
+                                        </SidebarMenuButton>
+                                        <CollapsibleContent>
+                                            <div className="pl-6">
+                                                {x.items.map((item) => (
+                                                    <SidebarMenuItem key={item.content}>
+                                                        <SidebarMenuButton asChild>
+                                                            <Link to={item.url} className="block py-2 hover:bg-gray-100 rounded-md px-2">
+                                                                {item.content}
+                                                            </Link>
+                                                        </SidebarMenuButton>
+                                                    </SidebarMenuItem>
+                                                ))}
+                                            </div>
+                                        </CollapsibleContent>
+                                    </SidebarMenuItem>
+                                </Collapsible>
+                            )}
                         </SidebarMenu>
                     ))}
                 </SidebarContent>

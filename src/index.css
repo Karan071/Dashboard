@@ -120,4 +120,11 @@
   body {
     font-family: var(--font-inter);
   }
+  
+}
+
+@layer components{
+  .heading-title {
+    @apply font-semibold text-xl px-4 py-2;
+  }
 }
