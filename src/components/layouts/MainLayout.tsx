@@ -10,7 +10,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 <div className="flex flex-col overflow-auto flex-1">
                     <Navbar />
                     <main className="flex-1 overflow-auto p-6 w-full">
-                        <div className="mt-20">
+                        <div className="mt-2">
                             {children}
                         </div>
                     </main>
