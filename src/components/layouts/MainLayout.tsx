@@ -9,8 +9,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 <UISidebar />
                 <div className="flex flex-col overflow-auto flex-1">
                     <Navbar />
-                    <main className="flex-1 overflow-auto p-6 w-full">
-                        <div className="mt-2">
+                    <main className="flex-1 overflow-auto w-full">
+                        <div className="">
                             {children}
                         </div>
                     </main>

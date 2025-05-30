@@ -1,20 +1,11 @@
 import MainLayout from "./components/layouts/MainLayout";
-import { StatsCards } from "@/components/application-component/stats-cards"
+
+import AppRoutes from "./routes/Index";
+
 export default function App(){
   return <div>
-    <MainLayout children={<Test/>}/>
+    <MainLayout>
+      <AppRoutes/>
+    </MainLayout>
   </div>
-}
-
-function Test() {
-  return (
-    <div>
-      <StatsCards/>
-      <StatsCards/>
-      <StatsCards/>
-      <StatsCards/>
-      <StatsCards/>
-      <StatsCards/> 
-    </div>
-  )
 }

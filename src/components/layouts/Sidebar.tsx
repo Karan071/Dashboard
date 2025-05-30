@@ -4,6 +4,87 @@ import logo from "@/assets/logo.png"
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+const SidebarItems = [
+    {
+        title: "User's",
+        items: [
+            { content: "Explorers", url: "/explorers" },
+            { content: "Coaches", url: "/coaches" },
+            { content: "Organisations", url: "/organisations" },
+        ],
+        isActive: true,
+    },
+    {
+        title: "Approvals",
+        items: [
+            { content: "Coache's Profiles", url: "/coaches-profiles" },
+            { content: "Organisations Profiles", url: "/organisations-profiles" },
+            { content: "Google Map Listings", url: "/map-listings" },
+            { content: "Forms Data", url: "/forms-data" },
+        ],
+        isActive: true,
+    },
+    {
+        title: "Products",
+        items: [
+            { content: "Assessments", url: "/assessments" },
+            { content: "Sessions", url: "/sessions" },
+            { content: "Sessions Pool", url: "/sessions-pool" },
+            { content: "Masterclasses", url: "/masterclasses" },
+            { content: "Learning", url: "/learning" },
+            { content: "Access Code", url: "/access-code" },
+        ],
+        isActive: true,
+    },
+    {
+        title: "CMS",
+        items: [
+            { content: "Insights", url: "/insights" },
+            { content: "Videos Library", url: "/videos" },
+            { content: "In the News", url: "/news" },
+            { content: "Testimonials", url: "/testimonials" },
+            { content: "Libraries", url: "/libraries" },
+            { content: "Online Surveys", url: "/surveys" },
+            { content: "Help Articles", url: "/help" },
+            { content: "FAQs", url: "/faqs" },
+            { content: "Team Members", url: "/team" },
+        ],
+        isActive: true,
+    },
+    {
+        title: "Business Enquiries",
+        items: [
+            { content: "Callback", url: "/callback" },
+            { content: "Chat Requests", url: "/chat-requests" },
+            { content: "Career Enquiries", url: "/career-enquiries" },
+            { content: "CareerLabs", url: "/careerlabs" },
+            { content: "Partners", url: "/partners" },
+        ],
+        isActive: false,
+    },
+    {
+        title: "User Reports",
+        items: [
+            { content: "Reviews", url: "/reviews" },
+            { content: "Feedbacks", url: "/feedbacks" },
+            { content: "Problems", url: "/problems" },
+            { content: "Bugs", url: "/bugs" },
+            { content: "Abuses", url: "/abuses" },
+        ],
+        isActive: true,
+    },
+    {
+        title: "Push Notifications",
+        items: [
+            { content: "Web / App", url: "/notifications-web" },
+            { content: "WhatsApp", url: "/notifications-whatsapp" },
+            { content: "Email", url: "/notifications-email" },
+        ],
+        isActive: false,
+    }
+];
 
 export default function UISidebar() {
     const [openSection, setOpenSection] = useState<string | null>(null);
@@ -22,8 +103,43 @@ export default function UISidebar() {
                     </div>
                 </SidebarHeader>
 
-                <SidebarContent className="px-2 py-4 ">
-                    {/* users */}
+                <SidebarContent className="mt-4">
+                    {SidebarItems.map((x) => (
+                        <SidebarMenu key={x.title}>
+                            <Collapsible
+                                open={openSection === x.title}
+                                onOpenChange={() => handleSectionToggle(x.title)}
+                                className="group/collapsible"
+                            >
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton asChild>
+                                        <CollapsibleTrigger className="w-full">
+                                            <div className="flex items-center justify-between w-full ml-4">
+                                                <span>{x.title}</span>
+                                                <ChevronDown className="mr-2 h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                                            </div>
+                                        </CollapsibleTrigger>
+                                    </SidebarMenuButton>
+                                    <CollapsibleContent>
+                                        <div className="pl-6">
+                                            {x.items.map((item) => (
+                                                <SidebarMenuItem key={item.content}>
+                                                    <SidebarMenuButton asChild>
+                                                        <Link to={item.url} className="block py-2 hover:bg-gray-100 rounded-md px-2">
+                                                            {item.content}
+                                                        </Link>
+                                                    </SidebarMenuButton>
+                                                </SidebarMenuItem>
+                                            ))}
+                                        </div>
+                                    </CollapsibleContent>
+                                </SidebarMenuItem>
+                            </Collapsible>
+                        </SidebarMenu>
+                    ))}
+                </SidebarContent>
+
+                {/* <SidebarContent className="px-2 py-4 ">
                     <SidebarMenu>
                         <Collapsible
                             open={openSection === 'users'}
@@ -61,7 +177,6 @@ export default function UISidebar() {
                             </SidebarMenuItem>
                         </Collapsible>
                     </SidebarMenu>
-                    {/* Products */}
                     <SidebarMenu>
                         <Collapsible
                             open={openSection === 'approvals'}
@@ -102,7 +217,7 @@ export default function UISidebar() {
                             </SidebarMenuItem>
                         </Collapsible>
                     </SidebarMenu>
-                    {/* Approval */}
+        
                     <SidebarMenu>
                         <Collapsible
                             open={openSection === 'products'}
@@ -150,7 +265,7 @@ export default function UISidebar() {
                             </SidebarMenuItem>
                         </Collapsible>
                     </SidebarMenu>
-                    {/* CMS */}
+                    
                     <SidebarMenu>
                         <Collapsible
                             open={openSection === 'cms'}
@@ -218,7 +333,7 @@ export default function UISidebar() {
                             </SidebarMenuItem>
                         </Collapsible>
                     </SidebarMenu>
-                    {/* Bussiness Enquires */}
+                    
                     <SidebarMenu>
                         <Collapsible
                             open={openSection === 'business'}
@@ -266,7 +381,7 @@ export default function UISidebar() {
                             </SidebarMenuItem>
                         </Collapsible>
                     </SidebarMenu>
-                    {/* User Reports */}
+                    
                     <SidebarMenu>
                         <Collapsible
                             open={openSection === 'reports'}
@@ -314,7 +429,7 @@ export default function UISidebar() {
                             </SidebarMenuItem>
                         </Collapsible>
                     </SidebarMenu>
-                    {/* Notifications */}
+                    
                     <SidebarMenu>
                         <Collapsible
                             open={openSection === 'notifications'}
@@ -362,7 +477,7 @@ export default function UISidebar() {
                             </SidebarMenuItem>
                         </Collapsible>
                     </SidebarMenu>
-                    {/* Finance */}
+                    
                     <SidebarMenu>
                         <Collapsible
                             open={openSection === 'finance'}
@@ -405,8 +520,7 @@ export default function UISidebar() {
                             </SidebarMenuItem>
                         </Collapsible>
                     </SidebarMenu>
-
-                </SidebarContent>
+                </SidebarContent> */}
 
                 <SidebarFooter className="border-t-1 p-4">
                     <SidebarMenu>
