@@ -8,11 +8,11 @@ import logoPicture from "@/assets/icons4.jpeg";
 
 export default function Navbar() {
     return (
-        <header className="absolute top-0 flex  h-14 items-center justify-between border-b bg-white px-6 dark:bg-gray-800 w-full overflow-hidden">
+        <header className="absolute top-0 flex h-16 items-center justify-between border-b bg-white px-6 dark:bg-gray-800 w-full overflow-hidden">
             <div className="flex items-center lg:hidden pr-2">
-                <SidebarTrigger className="inline-flex justify-center items-center size-10"/>
+                <SidebarTrigger className="inline-flex justify-center items-center "/>
             </div>
-            <div className="flex items-center gap-4 md:ml-auto">
+            <div className="flex items-center gap-0 md:gap-6 md:ml-auto">
                 <div className="relative">
                     <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
                     <Input type="search" placeholder="Search..." className="w-[200px] pl-8 md:w-[300px]" />
@@ -22,7 +22,7 @@ export default function Navbar() {
                 </Button>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="flex items-center gap-2">
+                        <Button variant="ghost" className="flex items-center gap-">
                             <div className="h-8 w-8 rounded-full bg-gray-200">
                                 <img src={logoPicture} alt="Admin" className="h-8 w-8 rounded-full object-cover" />
                             </div>

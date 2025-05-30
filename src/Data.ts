@@ -335,3 +335,85 @@ export const mockUsers = [
         status: "Active",
     }
 ]
+
+
+
+
+// A
+export const API = {
+    "user": {
+        "id": "",
+        "role_id": "",
+        "is_active": "",
+        "name": "",
+        "username": "",
+        "email": "",
+        "headline": "",
+        "phone": "",
+        "country": "",
+        "language": {
+            "id": "",
+            "code": "",
+            "name": ""
+        },
+        "status": "",
+        "payout": {
+            "method": "",
+            "icon": "",
+            "email": ""
+        },
+        "created_at": "",
+        "updated_at": "",
+        "last_activity_at": "",
+        "registration_at": "",
+        "avatar": "",
+        "web_token": "",
+        "teach_via": ""
+    },
+    "details": {
+        "id": "",
+        "user_id": "",
+        "gender": "",
+        "dob": "",
+        "profile_type": "",
+        "class": "",
+        "qualification": "",
+        "aadhar_details": {
+            "status": "",
+            "ref_id": "",
+            "aadhar_num": "",
+            "care_of": "",
+            "address": "",
+            "dob": "",
+            "gender": "",
+            "mobile_hash": ""
+        },
+        "pan_details": {
+            "pan_status": "",
+            "reference_id": "",
+            "name_pan_card": "",
+            "pan": "",
+            "type": "",
+            "aadhaar_seeding_status": ""
+        },
+        "bank_details": {
+            "account_status": "",
+            "reference_id": "",
+            "name_at_bank": "",
+            "bank_name": "",
+            "micr": "",
+            "ifsc": "",
+            "type": "",
+            "number": "",
+            "address": ""
+        },
+        "career_classes": {
+            "id": "",
+            "name": "",
+            "qualification_id": "",
+            "qus_type": ""
+        },
+        "created_at": "",
+        "updated_at": ""
+    }
+}

@@ -20,6 +20,7 @@ import Navbar from "@/components/layouts/Navbar";
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     return (
         <SidebarProvider>
+            
             <div className="flex">
                 <UISidebar />
                 <div className="flex flex-col">
