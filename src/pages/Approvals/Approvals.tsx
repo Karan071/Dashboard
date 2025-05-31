@@ -1,12 +1,12 @@
-import { Users, Building2, UserPlus, MessageSquare } from "lucide-react";
+import { Users, Building2, UserPlus, MessageSquare, Check, Plus } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { mockUsers } from "@/Data";
-import { Eye, Flag, ChevronLeft, ChevronRight } from "lucide-react";
+import { Eye, ChevronLeft, ChevronRight } from "lucide-react";
+import { CoachProfileData, OrganisationProfiles, GoogleMapListings, FormsSubmittedData } from "@/Data";
 
 const stats = [
     {
@@ -39,46 +39,46 @@ const stats = [
     },
 ]
 
-const CoachProfileData = [
-    {
-        "name": "Dr. Seema Rao",
-        "email": "seema@edu.com",
-        "phone": "+91-XXXXX",
-        "speciality": "Psychology",
-        "submitted": "17 May 2025",
-        "profile_link": "View Profile",
-        "actions": ["Approve", "Reject"]
-    },
-    {
-        "name": "Ramesh Patel",
-        "email": "ramesh@career.in",
-        "phone": "+91-XXXXX",
-        "speciality": "STEM",
-        "submitted": "16 May 2025",
-        "profile_link": "View Profile",
-        "actions": ["Approve", "Reject"]
-    }
-];
-
 
 
 export default function Approvals() {
 
     const [selectedUsers, setSelectedUsers] = useState<String[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [coachPage, setCoachPage] = useState(1);
+    const [orgPage, setOrgPage] = useState(1);
+    const [mapPage, setMapPage] = useState(1);
+    const [formPage, setFormPage] = useState(1);
     const recordsPerPage = 5;
 
-    // Calculate pagination data
-    const totalPages = Math.ceil(mockUsers.length / recordsPerPage)
-    const indexOfLastRecord = currentPage * recordsPerPage
-    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
-    const currentRecords = mockUsers.slice(indexOfFirstRecord, indexOfLastRecord)
+    // Coach pagination
+    const coachTotalPages = Math.ceil(CoachProfileData.length / recordsPerPage);
+    const coachIndexLast = coachPage * recordsPerPage;
+    const coachIndexFirst = coachIndexLast - recordsPerPage;
+    const coachRecords = CoachProfileData.slice(coachIndexFirst, coachIndexLast);
+
+    // Organization pagination
+    const orgTotalPages = Math.ceil(OrganisationProfiles.length / recordsPerPage);
+    const orgIndexLast = orgPage * recordsPerPage;
+    const orgIndexFirst = orgIndexLast - recordsPerPage;
+    const orgRecords = OrganisationProfiles.slice(orgIndexFirst, orgIndexLast);
+
+    // Map pagination
+    const mapTotalPages = Math.ceil(GoogleMapListings.length / recordsPerPage);
+    const mapIndexLast = mapPage * recordsPerPage;
+    const mapIndexFirst = mapIndexLast - recordsPerPage;
+    const mapRecords = GoogleMapListings.slice(mapIndexFirst, mapIndexLast);
+
+    // Form pagination
+    const formTotalPages = Math.ceil(FormsSubmittedData.length / recordsPerPage);
+    const formIndexLast = formPage * recordsPerPage;
+    const formIndexFirst = formIndexLast - recordsPerPage;
+    const formRecords = FormsSubmittedData.slice(formIndexFirst, formIndexLast);
 
     const toggleSelectAll = () => {
-        if (selectedUsers.length === currentRecords.length) {
+        if (CoachProfileData.length === CoachProfileData.length) {
             setSelectedUsers([])
         } else {
-            setSelectedUsers(currentRecords.map((user) => user.id))
+            setSelectedUsers(CoachProfileData.map((user) => user.id.toString()))
         }
     }
 
@@ -90,9 +90,8 @@ export default function Approvals() {
         }
     }
 
-
     return (
-        <div>
+        <div className="p-4">
             {/* Cards */}
             <h1 className="heading-title">Overview Stats (Pending Approvals) </h1>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
@@ -114,7 +113,7 @@ export default function Approvals() {
             <div>
                 <h2 className="heading-title">Coach Profile Pending</h2>
                 <div>
-                    <div className="overflow-x-auto">
+                    <div className="overflow-x-auto mt-2">
                         <Table>
                             <TableHeader>
                                 <TableRow>
@@ -124,17 +123,16 @@ export default function Approvals() {
                                     <TableHead>Phone</TableHead>
                                     <TableHead>Speciality</TableHead>
                                     <TableHead>Submitted</TableHead>
-                                    <TableHead>Profile</TableHead>
                                     <TableHead className="text-center">Actions</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {CoachProfileData.map((user) => (
-                                    <TableRow key={user.name}>
+                                {coachRecords.map((user) => (
+                                    <TableRow key={user.id}>
                                         <TableCell>
                                             <Checkbox
-                                                checked={selectedUsers.includes(user.name)}
-                                                onCheckedChange={() => toggleSelectUser(user.name)}
+                                                checked={selectedUsers.includes(user.id.toString())}
+                                                onCheckedChange={() => toggleSelectUser(user.id.toString())}
                                             />
                                         </TableCell>
                                         <TableCell>
@@ -155,10 +153,10 @@ export default function Approvals() {
 
                                         <TableCell>
                                             <div className="text-sm">{user.email}</div>
-                                            <div className="text-xs text-gray-500">{user.email}</div>
+                                            <Badge variant="outline">{user.phone}</Badge>
                                         </TableCell>
                                         <TableCell>
-                                            <Badge variant="outline">{user.phone}</Badge>
+                                            <div className="text-sm">{user.phone}</div>
                                         </TableCell>
                                         <TableCell>
                                             <div className="text-sm">
@@ -170,7 +168,6 @@ export default function Approvals() {
                                                 {user.submitted}
                                             </div>
                                         </TableCell>
-                                        <TableCell>{user.profile_link}</TableCell>
                                         <TableCell>
                                             <div className="flex justify-center gap-2">
                                                 <Button
@@ -182,11 +179,11 @@ export default function Approvals() {
                                                     <span className="sr-only">View</span>
                                                 </Button>
                                                 <Button variant="ghost" size="icon">
-                                                    <MessageSquare className="h-4 w-4" />
+                                                    <Check className="h-4 w-4" />
                                                     <span className="sr-only">Chat</span>
                                                 </Button>
                                                 <Button variant="ghost" size="icon">
-                                                    <Flag className="h-4 w-4" />
+                                                    <Plus className="h-4 w-4 rotate-45" />
                                                     <span className="sr-only">Flag</span>
                                                 </Button>
                                             </div>
@@ -196,27 +193,27 @@ export default function Approvals() {
                             </TableBody>
                         </Table>
                     </div>
-                    {/* Pagination */}
+                    {/* Coach Pagination */}
                     <div className="flex items-center justify-between border-t p-4">
                         <div className="text-sm text-gray-500">
-                            Showing {indexOfFirstRecord + 1}-{Math.min(indexOfLastRecord, mockUsers.length)} of {mockUsers.length} explorers
+                            Showing {coachIndexFirst + 1}-{Math.min(coachIndexLast, CoachProfileData.length)} of {CoachProfileData.length} coaches
                         </div>
                         <div className="flex items-center gap-2">
                             <Button
                                 variant="outline"
                                 size="icon"
-                                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                                disabled={currentPage === 1}
+                                onClick={() => setCoachPage(prev => Math.max(prev - 1, 1))}
+                                disabled={coachPage === 1}
                             >
                                 <ChevronLeft className="h-4 w-4" />
                             </Button>
-                            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                            {Array.from({ length: coachTotalPages }, (_, i) => i + 1).map(page => (
                                 <Button
                                     key={page}
-                                    variant={page === currentPage ? "default" : "outline"}
+                                    variant={page === coachPage ? "default" : "outline"}
                                     size="sm"
                                     className="h-8 w-8 p-0"
-                                    onClick={() => setCurrentPage(page)}
+                                    onClick={() => setCoachPage(page)}
                                 >
                                     {page}
                                 </Button>
@@ -224,8 +221,8 @@ export default function Approvals() {
                             <Button
                                 variant="outline"
                                 size="icon"
-                                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                                disabled={currentPage === totalPages}
+                                onClick={() => setCoachPage(prev => Math.min(prev + 1, coachTotalPages))}
+                                disabled={coachPage === coachTotalPages}
                             >
                                 <ChevronRight className="h-4 w-4" />
                             </Button>
@@ -236,13 +233,351 @@ export default function Approvals() {
 
             <h2 className="heading-title">Organization Profiles - Pending Approvals</h2>
             <div>
+                <div className="overflow-x-auto mt-2">
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50px]"></TableHead>
+                                <TableHead>Organisation</TableHead>
+                                <TableHead>Location</TableHead>
+                                <TableHead>Contact</TableHead>
+                                <TableHead>Type</TableHead>
+                                <TableHead>Submitted</TableHead>
+                                <TableHead className="text-center">Actions</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {orgRecords.map((user) => (
+                                <TableRow key={user.id}>
+                                    <TableCell>
+                                        <Checkbox
+                                            checked={selectedUsers.includes(user.id.toString())}
+                                            onCheckedChange={() => toggleSelectUser(user.id.toString())}
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
+                                                <img
+                                                    // src={user.photo || "/placeholder.svg"}
+                                                    alt={user.organisation}
+                                                    className="h-full w-full object-cover"
+                                                />
+                                            </div>
+                                            <div>
+                                                <div className="font-medium">{user.organisation}</div>
+                                                {/* <div className="text-xs text-gray-500">{user.gender}</div> */}
+                                            </div>
+                                        </div>
+                                    </TableCell>
 
-            </div>  
-            
+                                    <TableCell>
+                                        <div className="text-sm">{user.location}</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="text-sm">{user.contact}</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="text-sm">
+                                            {user.type}
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="text-sm">
+                                            {user.submitted}
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="flex justify-center gap-2">
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                            // onClick={() => navigate(`/user-details/${user.id}`)}
+                                            >
+                                                <Eye className="h-4 w-4" />
+                                                <span className="sr-only">View</span>
+                                            </Button>
+                                            <Button variant="ghost" size="icon">
+                                                <Check className="h-4 w-4" />
+                                                <span className="sr-only">Chat</span>
+                                            </Button>
+                                            <Button variant="ghost" size="icon">
+                                                <Plus className="h-4 w-4 rotate-45" />
+                                                <span className="sr-only">Flag</span>
+                                            </Button>
+                                        </div>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+                {/* Organization Pagination */}
+                <div className="flex items-center justify-between border-t p-4">
+                    <div className="text-sm text-gray-500">
+                        Showing {orgIndexFirst + 1}-{Math.min(orgIndexLast, OrganisationProfiles.length)} of {OrganisationProfiles.length} organizations
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => setOrgPage(prev => Math.max(prev - 1, 1))}
+                            disabled={orgPage === 1}
+                        >
+                            <ChevronLeft className="h-4 w-4" />
+                        </Button>
+                        {Array.from({ length: orgTotalPages }, (_, i) => i + 1).map(page => (
+                            <Button
+                                key={page}
+                                variant={page === orgPage ? "default" : "outline"}
+                                size="sm"
+                                className="h-8 w-8 p-0"
+                                onClick={() => setOrgPage(page)}
+                            >
+                                {page}
+                            </Button>
+                        ))}
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => setOrgPage(prev => Math.min(prev + 1, orgTotalPages))}
+                            disabled={orgPage === orgTotalPages}
+                        >
+                            <ChevronRight className="h-4 w-4" />
+                        </Button>
+                    </div>
+                </div>
+            </div>
             {/* Google */}
-            <h2>Google Map Listing - Approval Needed</h2>
+            <h2 className="heading-title">Google Map Listing - Approval Needed</h2>
             <div>
+                <div className="overflow-x-auto mt-2">
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50px]"></TableHead>
+                                <TableHead>Listing</TableHead>
+                                <TableHead>Address</TableHead>
+                                <TableHead>Linked Org</TableHead>
+                                <TableHead>Submitted</TableHead>
+                                <TableHead className="text-center">Actions</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {mapRecords.map((user) => (
+                                <TableRow key={user.id}>
+                                    <TableCell>
+                                        <Checkbox
+                                            checked={selectedUsers.includes(user.id.toString())}
+                                            onCheckedChange={() => toggleSelectUser(user.id.toString())}
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
+                                                <img
+                                                    // src={user.photo || "/placeholder.svg"}
+                                                    alt={user.listing}
+                                                    className="h-full w-full object-cover"
+                                                />
+                                            </div>
+                                            <div>
+                                                <div className="font-medium">{user.address}</div>
+                                                {/* <div className="text-xs text-gray-500">{user.gender}</div> */}
+                                            </div>
+                                        </div>
+                                    </TableCell>
 
+                                    <TableCell>
+                                        <div className="text-sm">{user.linked_org}</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="text-sm">{user.submitted}</div>
+                                    </TableCell>
+                                    
+                                    <TableCell>
+                                        <div className="text-sm">
+                                            {user.submitted}
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="flex justify-center gap-2">
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                            // onClick={() => navigate(`/user-details/${user.id}`)}
+                                            >
+                                                <Eye className="h-4 w-4" />
+                                                <span className="sr-only">View</span>
+                                            </Button>
+                                            <Button variant="ghost" size="icon">
+                                                <Check className="h-4 w-4" />
+                                                <span className="sr-only">Chat</span>
+                                            </Button>
+                                            <Button variant="ghost" size="icon">
+                                                <Plus className="h-4 w-4 rotate-45" />
+                                                <span className="sr-only">Flag</span>
+                                            </Button>
+                                        </div>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+                {/* Map Pagination */}
+                <div className="flex items-center justify-between border-t p-4">
+                    <div className="text-sm text-gray-500">
+                        Showing {mapIndexFirst + 1}-{Math.min(mapIndexLast, GoogleMapListings.length)} of {GoogleMapListings.length} listings
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => setMapPage(prev => Math.max(prev - 1, 1))}
+                            disabled={mapPage === 1}
+                        >
+                            <ChevronLeft className="h-4 w-4" />
+                        </Button>
+                        {Array.from({ length: mapTotalPages }, (_, i) => i + 1).map(page => (
+                            <Button
+                                key={page}
+                                variant={page === mapPage ? "default" : "outline"}
+                                size="sm"
+                                className="h-8 w-8 p-0"
+                                onClick={() => setMapPage(page)}
+                            >
+                                {page}
+                            </Button>
+                        ))}
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => setMapPage(prev => Math.min(prev + 1, mapTotalPages))}
+                            disabled={mapPage === mapTotalPages}
+                        >
+                            <ChevronRight className="h-4 w-4" />
+                        </Button>
+                    </div>
+                </div>
+            </div>
+            
+            {/* Form */}
+            <h2 className="heading-title">Form Data - User Submitted Entries</h2>
+            <div>
+                <div className="overflow-x-auto mt-2">
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50px]"></TableHead>
+                                <TableHead>User</TableHead>
+                                <TableHead>Type</TableHead>
+                                <TableHead>Name</TableHead>
+                                <TableHead>Location</TableHead>
+                                <TableHead>Submitted</TableHead>
+                                <TableHead className="text-center">Actions</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {formRecords.map((user) => (
+                                <TableRow key={user.id}>
+                                    <TableCell>
+                                        <Checkbox
+                                            checked={selectedUsers.includes(user.id.toString())}
+                                            onCheckedChange={() => toggleSelectUser(user.id.toString())}
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
+                                                <img
+                                                    // src={user.photo || "/placeholder.svg"}
+                                                    alt={user.user}
+                                                    className="h-full w-full object-cover"
+                                                />
+                                            </div>
+                                            <div>
+                                                <div className="font-medium">{user.user}</div>
+                                            </div>
+                                        </div>
+                                    </TableCell>
+
+                                    <TableCell>
+                                        <div className="text-sm">{user.type}</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="text-sm">{user.name}</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="text-sm">
+                                            {user.location}
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="text-sm">
+                                            {user.submitted}
+                                        </div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="flex justify-center gap-2">
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                            // onClick={() => navigate(`/user-details/${user.id}`)}
+                                            >
+                                                <Eye className="h-4 w-4" />
+                                                <span className="sr-only">View</span>
+                                            </Button>
+                                            <Button variant="ghost" size="icon">
+                                                <Check className="h-4 w-4" />
+                                                <span className="sr-only">Chat</span>
+                                            </Button>
+                                            <Button variant="ghost" size="icon">
+                                                <Plus className="h-4 w-4 rotate-45" />
+                                                <span className="sr-only">Flag</span>
+                                            </Button>
+                                        </div>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+                {/* Form Pagination */}
+                <div className="flex items-center justify-between border-t p-4">
+                    <div className="text-sm text-gray-500">
+                        Showing {formIndexFirst + 1}-{Math.min(formIndexLast, FormsSubmittedData.length)} of {FormsSubmittedData.length} forms
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => setFormPage(prev => Math.max(prev - 1, 1))}
+                            disabled={formPage === 1}
+                        >
+                            <ChevronLeft className="h-4 w-4" />
+                        </Button>
+                        {Array.from({ length: formTotalPages }, (_, i) => i + 1).map(page => (
+                            <Button
+                                key={page}
+                                variant={page === formPage ? "default" : "outline"}
+                                size="sm"
+                                className="h-8 w-8 p-0"
+                                onClick={() => setFormPage(page)}
+                            >
+                                {page}
+                            </Button>
+                        ))}
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => setFormPage(prev => Math.min(prev + 1, formTotalPages))}
+                            disabled={formPage === formTotalPages}
+                        >
+                            <ChevronRight className="h-4 w-4" />
+                        </Button>
+                    </div>
+                </div>
             </div>
         </div>
     )
