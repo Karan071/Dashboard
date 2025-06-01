@@ -196,7 +196,14 @@ export default function Insights() {
   const [activeTab, setActiveTab] = useState("published");
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [filtersOpen, setFiltersOpen] = useState(false);
-    const [filters, setFilters] = useState<Filters>({
+  const [filters, setFilters] = useState<Filters>({ ... });
+  const [page, setPage] = useState(1);
+  const handleApplyFilters = () => {
+    setFiltersOpen(false);
+    console.log("Filters applied:", filters);
+  };
+   const handleResetFilters = () => {
+    setFilters({
       source: "",
       status: {
         published: true,
@@ -204,7 +211,8 @@ export default function Insights() {
       },
       dateRange: undefined,
     });
-  const [page, setPage] = useState(1);
+    console.log("Filters reset");
+  }
   const recordsPerPage = 5;
 
   // Get current data based on active tab
@@ -224,6 +232,7 @@ export default function Insights() {
   const indexLast = page * recordsPerPage;
   const indexFirst = indexLast - recordsPerPage;
   const currentRecords = currentData.slice(indexFirst, indexLast);
+  
 
   // Reset page and selections when tab changes
   useEffect(() => {

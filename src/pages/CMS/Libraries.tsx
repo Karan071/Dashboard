@@ -30,6 +30,29 @@ import {
   NGOsTableData,
 } from "@/Data";
 
+interface BaseResource {
+  title: string;
+  tags: string[];
+  for: string;
+  source: string;
+  status: string;
+  actions: string[];
+}
+
+interface LibraryResource extends BaseResource {
+  lastUpdated: string;
+}
+
+interface NGOResource extends BaseResource {
+  lastUpdated: string;
+}
+
+interface DateBasedResource extends BaseResource {
+  upcomingDate: string;
+}
+
+type ResourceItem = LibraryResource | NGOResource | DateBasedResource;
+
 // Define tab structure
 const tabs = [
   { id: "library", label: "Library", icon: Book },
@@ -98,12 +121,20 @@ export default function Libraries() {
   // Get current data based on active tab
   const getCurrentData = () => {
     switch(activeTab) {
-      case "library": return LibraryTableData;
-      case "exams": return ExamsTableData;
-      case "scholarships": return ScholarshipsTableData;
-      case "ngos": return NGOsTableData;
-      default: return LibraryTableData;
+      case "library": return LibraryTableData as LibraryResource[];
+      case "exams": return ExamsTableData as DateBasedResource[];
+      case "scholarships": return ScholarshipsTableData as DateBasedResource[];
+      case "ngos": return NGOsTableData as NGOResource[];
+      default: return LibraryTableData as LibraryResource[];
     }
+  };
+
+  const isLibraryOrNGO = (item: ResourceItem): item is LibraryResource | NGOResource => {
+    return 'lastUpdated' in item;
+  };
+
+  const isDateBased = (item: ResourceItem): item is DateBasedResource => {
+    return 'upcomingDate' in item;
   };
 
   const currentData = getCurrentData();
@@ -231,10 +262,12 @@ export default function Libraries() {
                   </TableCell>
                   <TableCell>{item.for}</TableCell>
                   <TableCell>{item.source}</TableCell>
-                  <TableCell>
-                    {activeTab === "library" || activeTab === "ngos"
-                      ? item.lastUpdated
-                      : item.upcomingDate}
+                 <TableCell>
+                    {isLibraryOrNGO(item)
+                      ? item.lastUpdated ?? "-"
+                      : isDateBased(item)
+                      ? item.upcomingDate ?? "-"
+                      : "-"}
                   </TableCell>
                   <TableCell>
                     <Badge
