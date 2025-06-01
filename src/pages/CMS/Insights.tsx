@@ -29,6 +29,7 @@ import { DatePickerWithRange } from "@/components/application-component/date-ran
 import { Button } from "@/components/ui/button";
 import { Users, Building2, UserPlus, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Input } from "@/components/ui/input";
 import type { DateRange } from "react-day-picker"
 import {
   PublishedTableData,
@@ -90,8 +91,8 @@ function AdvancedFilters({
 }: { 
   filters: Filters;
   setFilters: (filters: Filters) => void;
-  onReset: () => void;
-  onApply: () => void;
+  onReset?: () => void;
+  onApply?: () => void;
 }) {
   return (
     <Card className="mt-8">
@@ -157,10 +158,10 @@ function AdvancedFilters({
           </div>
         </div>
 
-        <div className="mt-8 flex justify-end gap-2">
+        {/* <div className="mt-8 flex justify-end gap-2">
           <Button variant="outline" onClick={onReset}>Reset</Button>
           <Button onClick={onApply}>Apply Filters</Button>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   );
@@ -196,14 +197,7 @@ export default function Insights() {
   const [activeTab, setActiveTab] = useState("published");
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [filters, setFilters] = useState<Filters>({ ... });
-  const [page, setPage] = useState(1);
-  const handleApplyFilters = () => {
-    setFiltersOpen(false);
-    console.log("Filters applied:", filters);
-  };
-   const handleResetFilters = () => {
-    setFilters({
+    const [filters, setFilters] = useState<Filters>({
       source: "",
       status: {
         published: true,
@@ -211,8 +205,7 @@ export default function Insights() {
       },
       dateRange: undefined,
     });
-    console.log("Filters reset");
-  }
+  const [page, setPage] = useState(1);
   const recordsPerPage = 5;
 
   // Get current data based on active tab
@@ -317,8 +310,8 @@ export default function Insights() {
         <AdvancedFilters
           filters={filters}
           setFilters={setFilters}
-          onReset={handleResetFilters}
-          onApply={handleApplyFilters}
+          // onReset={handleResetFilters}
+          // onApply={handleApplyFilters}
         />
       )}
 
