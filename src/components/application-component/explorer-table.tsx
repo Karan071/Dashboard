@@ -144,6 +144,7 @@ export function ExplorerTable() {
                                 </TableCell>
                                 <TableCell>
                                     <Badge
+                                    //@ts-ignore
                                         variant={user.status === "Active" ? "success" : "secondary"}
                                         className={user.status === "Active" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"}
                                     >
