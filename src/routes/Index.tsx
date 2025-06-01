@@ -24,12 +24,7 @@ export default function AppRoutes() {
             <Route path="/surveys" element={<Surveys />} />
             <Route path="/helpArticles" element={<HelpArticles />} />
             <Route path="/faqspages" element={<FAQSPage />} />
-            {/*
-            <Route path="/insights" element={<CmsInsights />} />
-            <Route path="/videos" element={<VideoLibrary />} /> */}
-
             
-
             <Route path="*" element={<NotFound />} />
         </Routes>
     );
