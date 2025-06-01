@@ -1,6 +1,5 @@
 import {
   Users,
-  UserPlus,
   UserCheck,
   UserX,
   ChevronLeft,
