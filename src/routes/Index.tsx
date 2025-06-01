@@ -11,13 +11,14 @@ import Surveys from "@/pages/CMS/Surveys";
 import HelpArticles from "@/pages/CMS/HelpArticles";
 import FAQSPage from "@/pages/CMS/FAQ";
 import Explorer from "@/pages/Users/Explorer/Explorer";
+
 export default function AppRoutes() {
     return (
         <Routes>
-            <Route path="/insights" element={<Insights />} />
             <Route path="/explorers" element={<Explorer />} />
-
             <Route path="/approvals" element={<Approvals />} />
+            {/* CMS routings  */}
+            <Route path="/insights" element={<Insights />} />
             <Route path="/videoLibrary" element={<VideoLibrary />} />
             <Route path="/inTheNews" element={<InTheNews />} />
             <Route path="/testimonials" element={<Testimonials />} />
