@@ -12,7 +12,8 @@ import {
   Trash,
   Bell,
   Download,
-  Filter
+  Filter, 
+  Plus
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
@@ -234,8 +235,6 @@ export default function Insights() {
   };
 
   const currentData = getCurrentData();
-
-
   const totalPages = Math.ceil(currentData.length / recordsPerPage);
   const indexLast = page * recordsPerPage;
   const indexFirst = indexLast - recordsPerPage;
@@ -331,22 +330,27 @@ export default function Insights() {
       )}
 
       {/* Tabs */}
-      <div className="flex mb-6 border-b">
-        {tabs.map((tab) => (
-          <Button
-            key={tab.id}
-            variant={activeTab === tab.id ? "default" : "ghost"}
-            className={`rounded-b-none rounded-r-lg ${
-              activeTab === tab.id 
-                ? "border-b-2 border-primary bg-primary text-primary-foreground" 
+      <div className="flex justify-between items-center mb-6">
+        <div className="flex">
+          {tabs.map((tab) => (
+            <Button
+              key={tab.id}
+              variant={activeTab === tab.id ? "default" : "ghost"}
+              className={`rounded-b-none rounded-r-lg ${activeTab === tab.id
+                ? "border-b-2 border-primary bg-primary text-primary-foreground"
                 : "hover:bg-accent hover:text-accent-foreground"
-            } transition-colors duration-75`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            <tab.icon className=" h-4 w-15" />
-            {tab.label}
-          </Button>
-        ))}
+                } transition-colors duration-75`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              <tab.icon className="h-4 w-15" />
+              {tab.label}
+            </Button>
+          ))}
+        </div>
+        <Button>
+          <Plus className="text-white"/>
+          <span>Add Insight</span>
+        </Button>
       </div>
 
       {/* Content Section */}

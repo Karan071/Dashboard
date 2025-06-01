@@ -165,10 +165,12 @@ export default function UISidebar() {
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                         <SidebarMenuItem>
-                            <SidebarMenuButton>
-                                <LogOut />
-                                <span>Logout</span>
-                            </SidebarMenuButton>
+                            <Link to={"/"}>
+                                <SidebarMenuButton>
+                                    <LogOut />
+                                    <span>Logout</span>
+                                </SidebarMenuButton>
+                            </Link>
                         </SidebarMenuItem>
                     </SidebarMenu>
                 </SidebarFooter>

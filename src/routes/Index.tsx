@@ -10,12 +10,19 @@ import Libraries from "@/pages/CMS/Libraries";
 import Surveys from "@/pages/CMS/Surveys";
 import HelpArticles from "@/pages/CMS/HelpArticles";
 import FAQSPage from "@/pages/CMS/FAQ";
+
 import Explorer from "@/pages/Users/Explorer/Explorer";
+import Coach from "@/pages/Users/Coach/Coach";
+import Organisations from "@/pages/Users/Organisation/Organisations";
 
 export default function AppRoutes() {
     return (
         <Routes>
             <Route path="/explorers" element={<Explorer />} />
+            <Route path="/coaches" element={<Coach />} />
+            <Route path="/organisations" element={<Organisations/>} />
+
+
             <Route path="/approvals" element={<Approvals />} />
             {/* CMS routings  */}
             <Route path="/insights" element={<Insights />} />
