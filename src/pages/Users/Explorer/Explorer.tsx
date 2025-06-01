@@ -1,157 +1,54 @@
 import { useState } from "react"
-import { ChevronDown, Filter, Download, Bell, Search, Users, BarChart3, MessageSquare, Settings, HelpCircle, LogOut, } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { DatePickerWithRange } from "@/components/date-range-picker"
-import { ExplorerTable } from "@/components/explorer-table"
-import { StatsCards } from "@/components/stats-cards"
-import {
-    Sidebar,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    SidebarProvider,
-    SidebarTrigger,
-} from "@/components/ui/sidebar"
-import type { User } from "@/components/dashboard-page"
-import logo from "@/assets/logo.png"
-import picture from "@/assets/icon1.png"
+import { Checkbox } from "@radix-ui/react-checkbox"
+import { Button } from "@/components/ui/button"
+import { DropdownMenu, DropdownMenuItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { ChevronDown, Download, Filter } from "lucide-react"
+import { DatePickerWithRange } from "@/components/application-component/date-range-picker"
+import StatsCards from "@/components/application-component/stats-cards"
+import { ExplorerTable } from "@/components/application-component/explorer-table"
 
-interface AdminDashboardProps {
-    onViewUser: (user: User) => void
-}
 
-export function AdminDashboard({ onViewUser }: AdminDashboardProps) {
+export default function Explorer() {
     const [filtersOpen, setFiltersOpen] = useState(false)
-
     return (
-        <SidebarProvider>
-            <div className="flex h-screen w-screen">
-                <Sidebar>
-                    <SidebarHeader className="flex space-y-15 items-center px-6">
-                        <div className="text-lg font-semibold flex flex-col items-center gap-4 p-6">
-                            <img src={logo} alt="logo" className="h-20 w-20" />
-                            <div className="font-medium text-4xl">Explorer's Admin</div>
-                        </div>
-                    </SidebarHeader>
-                    <SidebarContent className="px-2 py-6 space-y-5">
-                        <SidebarMenu>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton isActive>
-                                    <BarChart3 />
-                                    <span>Dashboard</span>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton>
-                                    <Users />
-                                    <span>Explorers</span>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton>
-                                    <MessageSquare />
-                                    <span>Messages</span>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton>
-                                    <Settings />
-                                    <span>Settings</span>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                        </SidebarMenu>
-                    </SidebarContent>
-                    <SidebarFooter className="border-t-1 p-4">
-                        <SidebarMenu>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton>
-                                    <HelpCircle />
-                                    <span>Help & Support</span>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton>
-                                    <LogOut />
-                                    <span>Logout</span>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                        </SidebarMenu>
-                    </SidebarFooter>
-                </Sidebar>
-
-                <div className="flex flex-col overflow-hidden flex-1">
-                    <header className="flex h-14 items-center justify-between border-b bg-white px-6 dark:bg-gray-800 w-full">
-                        <div className="flex items-center md:hidden">
-                            <SidebarTrigger />
-                        </div>
-                        <div className="flex items-center gap-4 md:ml-auto">
-                            <div className="relative">
-                                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
-                                <Input type="search" placeholder="Search..." className="w-[200px] pl-8 md:w-[300px]" />
-                            </div>
-                            <Button variant="outline" size="icon">
-                                <Bell className="h-4 w-4" />
-                            </Button>
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" className="flex items-center gap-2">
-                                        <div className="h-8 w-8 rounded-full bg-gray-200">
-                                            <img src={picture} alt="Admin" className="h-8 w-8 rounded-full object-cover" />
-                                        </div>
-                                        <span className="hidden md:inline">Admin User</span>
-                                    </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className="p-2" align="end">
-                                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                                    <DropdownMenuItem>Settings</DropdownMenuItem>
-                                    <DropdownMenuItem>Logout</DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </div>
-                    </header>
-
-                    <main className="flex-1 overflow-auto p-6 w-full">
-                        <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-                            <h1 className="text-2xl font-bold">Explorers Dashboard</h1>
-                            <div className="flex gap-2">
-                                <Button variant="outline" className="flex items-center gap-2">
-                                    <Download className="h-4 w-4" />
-                                    Export
-                                </Button>
-                                <Button>Bulk Actions</Button>
-                            </div>
-                        </div>
-
-                        <StatsCards />
-
-                        {filtersOpen && <AdvancedFilters />}
-                        <div className="flex justify-end mt-4">
-                            <Button
-                                variant="outline"
-                                onClick={() => setFiltersOpen(!filtersOpen)}
-                                className="flex items-center gap-2"
-                            >
-                                <Filter className="h-4 w-4" />
-                                {filtersOpen ? "Hide Filters" : "Show Filters"}
-                            </Button>
-                        </div>
-
-                        <div className="mt-6">
-                            <ExplorerTable onViewUser={onViewUser} />
-                        </div>
-                    </main>
+        <div>
+            <main className="flex-1 overflow-auto p-6 w-full">
+                <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-center">
+                    <h1 className="text-2xl font-bold">Explorers Dashboard</h1>
+                    <div className="flex gap-2">
+                        <Button variant="outline" className="flex items-center gap-2">
+                            <Download className="h-4 w-4" />
+                            Export
+                        </Button>
+                        <Button>Bulk Actions</Button>
+                    </div>
                 </div>
-            </div>
-        </SidebarProvider>
+
+                <StatsCards />
+
+                {filtersOpen && <AdvancedFilters />}
+                <div className="flex justify-end mt-4">
+                    <Button
+                        variant="outline"
+                        onClick={() => setFiltersOpen(!filtersOpen)}
+                        className="flex items-center gap-2"
+                    >
+                        <Filter className="h-4 w-4" />
+                        {filtersOpen ? "Hide Filters" : "Show Filters"}
+                    </Button>
+                </div>
+
+                <div className="mt-6">
+                    {/* <ExplorerTable onViewUser={onViewUser} /> */}
+                    <ExplorerTable/>
+                </div>
+            </main>
+        </div>
     )
 }
+
 
 function AdvancedFilters() {
     return (

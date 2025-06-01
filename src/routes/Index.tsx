@@ -10,12 +10,14 @@ import Libraries from "@/pages/CMS/Libraries";
 import Surveys from "@/pages/CMS/Surveys";
 import HelpArticles from "@/pages/CMS/HelpArticles";
 import FAQSPage from "@/pages/CMS/FAQ";
+import Explorer from "@/pages/Users/Explorer/Explorer";
 export default function AppRoutes() {
     return (
         <Routes>
             <Route path="/insights" element={<Insights />} />
+            <Route path="/explorers" element={<Explorer />} />
 
-            <Route path="/approvals" element={<Approvals/>} />
+            <Route path="/approvals" element={<Approvals />} />
             <Route path="/videoLibrary" element={<VideoLibrary />} />
             <Route path="/inTheNews" element={<InTheNews />} />
             <Route path="/testimonials" element={<Testimonials />} />
@@ -24,7 +26,7 @@ export default function AppRoutes() {
             <Route path="/surveys" element={<Surveys />} />
             <Route path="/helpArticles" element={<HelpArticles />} />
             <Route path="/faqspages" element={<FAQSPage />} />
-            
+
             <Route path="*" element={<NotFound />} />
         </Routes>
     );
