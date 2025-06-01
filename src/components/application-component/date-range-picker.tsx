@@ -7,11 +7,34 @@ import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
-export function DatePickerWithRange({ className }: React.HTMLAttributes<HTMLDivElement>) {
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(),
-    to: addDays(new Date(), 7),
-  })
+interface DatePickerWithRangeProps {
+  className?: string
+  value?: DateRange
+  onChange?: (date: DateRange | undefined) => void
+}
+
+export function DatePickerWithRange({
+  className,
+  value,
+  onChange,
+}: DatePickerWithRangeProps) {
+  const [date, setDate] = React.useState<DateRange | undefined>(
+    value || {
+      from: new Date(),
+      to: addDays(new Date(), 7),
+    }
+  )
+
+  React.useEffect(() => {
+    if (value !== undefined) {
+      setDate(value)
+    }
+  }, [value])
+
+  const handleSelect = (newDate: DateRange | undefined) => {
+    setDate(newDate)
+    onChange?.(newDate)
+  }
 
   return (
     <div className={cn("grid gap-2", className)}>
@@ -20,7 +43,10 @@ export function DatePickerWithRange({ className }: React.HTMLAttributes<HTMLDivE
           <Button
             id="date"
             variant={"outline"}
-            className={cn("w-full justify-start text-left font-normal", !date && "text-muted-foreground")}
+            className={cn(
+              "w-full justify-start text-left font-normal",
+              !date && "text-muted-foreground"
+            )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
             {date?.from ? (
@@ -42,7 +68,7 @@ export function DatePickerWithRange({ className }: React.HTMLAttributes<HTMLDivE
             mode="range"
             defaultMonth={date?.from}
             selected={date}
-            onSelect={setDate}
+            onSelect={handleSelect}
             numberOfMonths={1}
             className="rounded-md border"
           />
