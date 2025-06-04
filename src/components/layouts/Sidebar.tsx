@@ -137,7 +137,7 @@ export default function UISidebar() {
                                         </SidebarMenuButton>
                                         <CollapsibleContent>
                                             <div className="pl-6">
-                                                {x.items.map((item) => (
+                                                {x.items?.map((item) => (
                                                     <SidebarMenuItem key={item.content}>
                                                         <SidebarMenuButton asChild>
                                                             <Link to={item.url} className="block py-2 hover:bg-gray-100 rounded-md px-2">
@@ -165,10 +165,12 @@ export default function UISidebar() {
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                         <SidebarMenuItem>
-                            <SidebarMenuButton>
-                                <LogOut />
-                                <span>Logout</span>
-                            </SidebarMenuButton>
+                            <Link to={"/"}>
+                                <SidebarMenuButton>
+                                    <LogOut />
+                                    <span>Logout</span>
+                                </SidebarMenuButton>
+                            </Link>
                         </SidebarMenuItem>
                     </SidebarMenu>
                 </SidebarFooter>

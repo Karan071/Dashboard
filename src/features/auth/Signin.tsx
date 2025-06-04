@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Link } from "react-router-dom"
 
 export default function Signin({
     className,
@@ -18,7 +19,7 @@ export default function Signin({
         <div className={cn("flex flex-col gap-6 justify-center items-center min-h-screen", className)} {...props}>
             <Card className="w-full max-w-xl mx-auto">
                 <CardHeader>
-                    <CardTitle className="text-2xl">Login</CardTitle>
+                    <CardTitle className="text-3xl mb-2">Login</CardTitle>
                     <CardDescription>
                         Enter your email below to login to your account
                     </CardDescription>
@@ -31,7 +32,7 @@ export default function Signin({
                                 <Input
                                     id="email"
                                     type="email"
-                                    placeholder="m@example.com"
+                                    placeholder="Enter your Email Address"
                                     required
                                 />
                             </div>
@@ -40,24 +41,26 @@ export default function Signin({
                                     <Label htmlFor="password">Password</Label>
                                     <a
                                         href="#"
-                                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline mb-2"
                                     >
                                         Forgot your password?
                                     </a>
                                 </div>
-                                <Input id="password" type="password" required />
+                                <Input id="password" type="password" placeholder="Enter your password" required />
                             </div>
-                            <Button type="submit" className="w-full">
-                                Login
-                            </Button>
+                            <Link to={'/explorers'}>
+                                <Button type="submit" className="w-full mt-2">
+                                    Login
+                                </Button>
+                            </Link>
 
                         </div>
-                        <div className="mt-4 text-center text-sm">
+                        {/* <div className="mt-4 text-center text-sm">
                             Don&apos;t have an account?{" "}
                             <a href="#" className="underline underline-offset-4">
                                 Sign up
                             </a>
-                        </div>
+                        </div> */}
                     </form>
                 </CardContent>
             </Card>

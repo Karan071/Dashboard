@@ -5,9 +5,9 @@
 // import { Input } from "@/components/ui/input"
 // import { Checkbox } from "@/components/ui/checkbox"
 // import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-// import { DatePickerWithRange } from "@/components/date-range-picker"
-// import { ExplorerTable } from "@/components/explorer-table"
-// import { StatsCards } from "@/components/stats-cards"
+// import { DatePickerWithRange } from "@/components/application-component/date-range-picker"
+// import { ExplorerTable } from "@/components/application-component/explorer-table"
+// import { StatsCards } from "@/components/application-component/stats-cards"
 // import {
 //     Sidebar,
 //     SidebarContent,
@@ -19,15 +19,17 @@
 //     SidebarProvider,
 //     SidebarTrigger,
 // } from "@/components/ui/sidebar"
-// import type { User } from "@/components/dashboard-page"
+// // import type { User } from "@/components/dashboard-page"
 // import logo from "@/assets/logo.png"
 // import picture from "@/assets/icon1.png"
 
-// interface AdminDashboardProps {
-//     onViewUser: (user: User) => void
-// }
+// // interface AdminDashboardProps {
+// //     onViewUser: (user: User) => void
+// // }
 
-// export function AdminDashboard({ onViewUser }: AdminDashboardProps) {
+// // export function AdminDashboard({ onViewUser }: AdminDashboardProps) {
+// export function AdminDashboard() {
+
 //     const [filtersOpen, setFiltersOpen] = useState(false)
 
 //     return (

@@ -1,44 +1,44 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, UserCheck, UserPlus, MessageSquare, Calendar, ClipboardCheck } from "lucide-react"
+import { Users, UserCheck, UserPlus, MessageSquare, Calendar } from "lucide-react"
+const stats = [
+  {
+    title: "Total Users",
+    value: "12,457",
+    icon: Users,
+    color: "text-blue-500",
+    bgColor: "bg-blue-100",
+  },
+  {
+    title: "Active Learners (30 Days)",
+    value: "4,385",
+    icon: UserCheck,
+    color: "text-green-500",
+    bgColor: "bg-green-100",
+  },
+  {
+    title: "New Signups (This Week)",
+    value: "312",
+    icon: UserPlus,
+    color: "text-purple-500",
+    bgColor: "bg-purple-100",
+  },
+  {
+    title: "Total Enquiries",
+    value: "642",
+    icon: MessageSquare,
+    color: "text-yellow-500",
+    bgColor: "bg-yellow-100",
+  },
+  {
+    title: "Users with Sessions Booked",
+    value: "1,205",
+    icon: Calendar,
+    color: "text-pink-500",
+    bgColor: "bg-pink-100",
+  },
+]
 
 export default function StatsCards() {
-  const stats = [
-    {
-      title: "Total Users",
-      value: "12,457",
-      icon: Users,
-      color: "text-blue-500",
-      bgColor: "bg-blue-100",
-    },
-    {
-      title: "Active Learners (30 Days)",
-      value: "4,385",
-      icon: UserCheck,
-      color: "text-green-500",
-      bgColor: "bg-green-100",
-    },
-    {
-      title: "New Signups (This Week)",
-      value: "312",
-      icon: UserPlus,
-      color: "text-purple-500",
-      bgColor: "bg-purple-100",
-    },
-    {
-      title: "Total Enquiries",
-      value: "642",
-      icon: MessageSquare,
-      color: "text-yellow-500",
-      bgColor: "bg-yellow-100",
-    },
-    {
-      title: "Users with Sessions Booked",
-      value: "1,205",
-      icon: Calendar,
-      color: "text-pink-500",
-      bgColor: "bg-pink-100",
-    },
-  ]
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 p-5">

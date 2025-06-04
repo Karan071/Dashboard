@@ -10,12 +10,22 @@ import Libraries from "@/pages/CMS/Libraries";
 import Surveys from "@/pages/CMS/Surveys";
 import HelpArticles from "@/pages/CMS/HelpArticles";
 import FAQSPage from "@/pages/CMS/FAQ";
+
+import Explorer from "@/pages/Users/Explorer/Explorer";
+import Coach from "@/pages/Users/Coach/Coach";
+import Organisations from "@/pages/Users/Organisation/Organisations";
+
 export default function AppRoutes() {
     return (
         <Routes>
-            <Route path="/insights" element={<Insights />} />
+            <Route path="/explorers" element={<Explorer />} />
+            <Route path="/coaches" element={<Coach />} />
+            <Route path="/organisations" element={<Organisations/>} />
 
-            <Route path="/approvals" element={<Approvals/>} />
+
+            <Route path="/approvals" element={<Approvals />} />
+            {/* CMS routings  */}
+            <Route path="/insights" element={<Insights />} />
             <Route path="/videoLibrary" element={<VideoLibrary />} />
             <Route path="/inTheNews" element={<InTheNews />} />
             <Route path="/testimonials" element={<Testimonials />} />
@@ -24,11 +34,6 @@ export default function AppRoutes() {
             <Route path="/surveys" element={<Surveys />} />
             <Route path="/helpArticles" element={<HelpArticles />} />
             <Route path="/faqspages" element={<FAQSPage />} />
-            {/*
-            <Route path="/insights" element={<CmsInsights />} />
-            <Route path="/videos" element={<VideoLibrary />} /> */}
-
-            
 
             <Route path="*" element={<NotFound />} />
         </Routes>

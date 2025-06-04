@@ -12,7 +12,8 @@ import {
   Trash,
   Bell,
   Download,
-  Filter
+  Filter, 
+  Plus
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
@@ -29,13 +30,13 @@ import { DatePickerWithRange } from "@/components/application-component/date-ran
 import { Button } from "@/components/ui/button";
 import { Users, Building2, UserPlus, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
 import type { DateRange } from "react-day-picker"
 import {
   PublishedTableData,
   DraftsTableData,
   PendingApprovalTableData,
 } from "@/Data";
+import { Input } from "@/components/ui/input";
 
 // Define tab structure
 const tabs = [
@@ -54,45 +55,45 @@ interface Filters {
 
 // Define stats structure for each tab
 const stats = [
-    {
-        title: "Total Insights Published:",
-        value: "468",
-        icon: Users,
-        color: "text-blue-500",
-        bgColor: "bg-blue-100",
-    },
-    {
-        title: "Pending Approval",
-        value: "23",
-        icon: Building2,
-        color: "text-green-500",
-        bgColor: "bg-green-100",
-    },
-    {
-        title: "Total Views Last 30 Days",
-        value: "19,320",
-        icon: UserPlus,
-        color: "text-purple-500",
-        bgColor: "bg-purple-100",
-    },
-    {
-        title: "Total Comments on Insights",
-        value: "412",
-        icon: MessageSquare,
-        color: "text-yellow-500",
-        bgColor: "bg-yellow-100",
-    },
+  {
+    title: "Total Insights Published:",
+    value: "468",
+    icon: Users,
+    color: "text-blue-500",
+    bgColor: "bg-blue-100",
+  },
+  {
+    title: "Pending Approval",
+    value: "23",
+    icon: Building2,
+    color: "text-green-500",
+    bgColor: "bg-green-100",
+  },
+  {
+    title: "Total Views Last 30 Days",
+    value: "19,320",
+    icon: UserPlus,
+    color: "text-purple-500",
+    bgColor: "bg-purple-100",
+  },
+  {
+    title: "Total Comments on Insights",
+    value: "412",
+    icon: MessageSquare,
+    color: "text-yellow-500",
+    bgColor: "bg-yellow-100",
+  },
 ]
-function AdvancedFilters({ 
-  filters, 
-  setFilters, 
-  onReset, 
-  onApply 
-}: { 
+function AdvancedFilters({
+  filters,
+  setFilters,
+  onReset,
+  onApply
+}: {
   filters: Filters;
   setFilters: (filters: Filters) => void;
-  onReset?: () => void;
-  onApply?: () => void;
+  onReset: () => void;
+  onApply: () => void;
 }) {
   return (
     <Card className="mt-8">
@@ -103,8 +104,8 @@ function AdvancedFilters({
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-2">
             <label className="text-sm font-medium">Source</label>
-            <Input 
-              placeholder="Search by news source" 
+            <Input
+              placeholder="Search by news source"
               className="mt-2"
               value={filters.source}
               onChange={(e) => setFilters({ ...filters, source: e.target.value })}
@@ -115,12 +116,12 @@ function AdvancedFilters({
             <label className="text-sm font-medium">Status</label>
             <div className="flex flex-wrap gap-4 mt-2">
               <div className="flex items-center space-x-2">
-                <Checkbox 
+                <Checkbox
                   id="published"
                   checked={filters.status.published}
-                  onCheckedChange={(checked) => 
-                    setFilters({ 
-                      ...filters, 
+                  onCheckedChange={(checked) =>
+                    setFilters({
+                      ...filters,
                       status: { ...filters.status, published: checked as boolean }
                     })
                   }
@@ -130,12 +131,12 @@ function AdvancedFilters({
                 </label>
               </div>
               <div className="flex items-center space-x-2">
-                <Checkbox 
+                <Checkbox
                   id="pending"
                   checked={filters.status.pending}
-                  onCheckedChange={(checked) => 
-                    setFilters({ 
-                      ...filters, 
+                  onCheckedChange={(checked) =>
+                    setFilters({
+                      ...filters,
                       status: { ...filters.status, pending: checked as boolean }
                     })
                   }
@@ -150,7 +151,7 @@ function AdvancedFilters({
           <div className="space-y-2">
             <label className="text-sm font-medium">Date Range</label>
             <div className="mt-2">
-              <DatePickerWithRange 
+              <DatePickerWithRange
                 value={filters.dateRange}
                 onChange={(range) => setFilters({ ...filters, dateRange: range })}
               />
@@ -158,10 +159,10 @@ function AdvancedFilters({
           </div>
         </div>
 
-        {/* <div className="mt-8 flex justify-end gap-2">
+        <div className="mt-8 flex justify-end gap-2">
           <Button variant="outline" onClick={onReset}>Reset</Button>
           <Button onClick={onApply}>Apply Filters</Button>
-        </div> */}
+        </div>
       </CardContent>
     </Card>
   );
@@ -197,7 +198,21 @@ export default function Insights() {
   const [activeTab, setActiveTab] = useState("published");
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [filtersOpen, setFiltersOpen] = useState(false);
-    const [filters, setFilters] = useState<Filters>({
+  const [filters, setFilters] = useState<Filters>({
+    source: "",
+    status: {
+      published: true,
+      pending: true
+    },
+    dateRange: undefined
+  });
+  const [page, setPage] = useState(1);
+  const handleApplyFilters = () => {
+    setFiltersOpen(false);
+    console.log("Filters applied:", filters);
+  };
+  const handleResetFilters = () => {
+    setFilters({
       source: "",
       status: {
         published: true,
@@ -205,12 +220,13 @@ export default function Insights() {
       },
       dateRange: undefined,
     });
-  const [page, setPage] = useState(1);
+    console.log("Filters reset");
+  }
   const recordsPerPage = 5;
 
   // Get current data based on active tab
   const getCurrentData = () => {
-    switch(activeTab) {
+    switch (activeTab) {
       case "published": return PublishedTableData;
       case "drafts": return DraftsTableData;
       case "pending": return PendingApprovalTableData;
@@ -219,13 +235,11 @@ export default function Insights() {
   };
 
   const currentData = getCurrentData();
-  
-  
   const totalPages = Math.ceil(currentData.length / recordsPerPage);
   const indexLast = page * recordsPerPage;
   const indexFirst = indexLast - recordsPerPage;
   const currentRecords = currentData.slice(indexFirst, indexLast);
-  
+
 
   // Reset page and selections when tab changes
   useEffect(() => {
@@ -296,7 +310,7 @@ export default function Insights() {
           </Card>
         ))}
       </div>
-  <div className="flex justify-end mb-6">
+      <div className="flex justify-end mb-6">
         <Button
           variant="outline"
           onClick={() => setFiltersOpen(!filtersOpen)}
@@ -310,24 +324,33 @@ export default function Insights() {
         <AdvancedFilters
           filters={filters}
           setFilters={setFilters}
-          // onReset={handleResetFilters}
-          // onApply={handleApplyFilters}
+          onReset={handleResetFilters}
+          onApply={handleApplyFilters}
         />
       )}
 
       {/* Tabs */}
-      <div className="flex space-x-4 mb-6 border-b">
-        {tabs.map((tab) => (
-          <Button
-            key={tab.id}
-            variant={activeTab === tab.id ? "default" : "ghost"}
-            className={`rounded-b-none ${activeTab === tab.id ? "border-b-2 border-blue-500" : ""}`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            <tab.icon className="mr-2 h-4 w-4" />
-            {tab.label}
-          </Button>
-        ))}
+      <div className="flex justify-between items-center mb-6">
+        <div className="flex">
+          {tabs.map((tab) => (
+            <Button
+              key={tab.id}
+              variant={activeTab === tab.id ? "default" : "ghost"}
+              className={`rounded-b-none rounded-r-lg ${activeTab === tab.id
+                ? "border-b-2 border-primary bg-primary text-primary-foreground"
+                : "hover:bg-accent hover:text-accent-foreground"
+                } transition-colors duration-75`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              <tab.icon className="h-4 w-15" />
+              {tab.label}
+            </Button>
+          ))}
+        </div>
+        <Button>
+          <Plus className="text-white"/>
+          <span>Add Insight</span>
+        </Button>
       </div>
 
       {/* Content Section */}
@@ -373,7 +396,7 @@ export default function Insights() {
           <h2 className="heading-title">
             {tabs.find(t => t.id === activeTab)?.label} Content
           </h2>
-          
+
           <div className="overflow-x-auto mt-2">
             <Table>
               <TableHeader>
@@ -391,11 +414,11 @@ export default function Insights() {
                   <TableHead>Author</TableHead>
                   {activeTab === "published" && <TableHead>Category</TableHead>}
                   <TableHead>
-                    {activeTab === "published" 
-                      ? "Tags" 
-                      : activeTab === "drafts" 
-                      ? "Suggested Tags" 
-                      : "Assigned Editor"}
+                    {activeTab === "published"
+                      ? "Tags"
+                      : activeTab === "drafts"
+                        ? "Suggested Tags"
+                        : "Assigned Editor"}
                   </TableHead>
                   {activeTab === "published" && <TableHead>Audience</TableHead>}
                   {activeTab === "published" && <TableHead>Views</TableHead>}
@@ -415,18 +438,18 @@ export default function Insights() {
                     </TableCell>
                     <TableCell className="font-medium">{item.title}</TableCell>
                     <TableCell>{item.author}</TableCell>
-                    
+
                     {activeTab === "published" && (
                       <TableCell>
                         <Badge variant="outline">{item.category}</Badge>
                       </TableCell>
                     )}
-                    
+
                     <TableCell>
                       <div className="flex flex-wrap gap-1">
                         {getTagsToDisplay(item).map((tag, idx: number) => (
-                          <Badge 
-                            key={idx} 
+                          <Badge
+                            key={idx}
                             variant={
                               activeTab === "pending" ? "secondary" : "outline"
                             }
@@ -436,11 +459,11 @@ export default function Insights() {
                         ))}
                       </div>
                     </TableCell>
-                    
+
                     {activeTab === "published" && isPublishedItem(item) && (
                       <TableCell>{item.for}</TableCell>
                     )}
-                    
+
                     {activeTab === "published" && isPublishedItem(item) && (
                       <TableCell>
                         <Badge variant="secondary">
@@ -448,15 +471,15 @@ export default function Insights() {
                         </Badge>
                       </TableCell>
                     )}
-                    
+
                     {activeTab === "drafts" && isDraftItem(item) && (
                       <TableCell>{item.lastEdited}</TableCell>
                     )}
-                    
+
                     {activeTab === "pending" && isPendingItem(item) && (
                       <TableCell>{item.submittedOn}</TableCell>
                     )}
-                    
+
                     <TableCell>
                       <div className="flex justify-center gap-2">
                         {item.actions.map((action, index) => (
@@ -466,9 +489,9 @@ export default function Insights() {
                             size="icon"
                             title={action}
                             className={
-                              action === "View" ? "text-blue-500" : 
-                              action === "Delete" || action === "Reject" ? "text-[#000000]" : 
-                              action === "Approve" ? "text-[#000000]" : ""
+                              action === "View" ? "text-blue-500" :
+                                action === "Delete" || action === "Reject" ? "text-[#000000]" :
+                                  action === "Approve" ? "text-[#000000]" : ""
                             }
                           >
                             {actionToIcon[action as keyof typeof actionToIcon]}

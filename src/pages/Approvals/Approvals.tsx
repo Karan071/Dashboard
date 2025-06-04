@@ -77,7 +77,7 @@ export default function Approvals() {
     const formRecords = FormsSubmittedData.slice(formIndexFirst, formIndexLast);
 
     const toggleSelectAll = () => {
-        if (CoachProfileData.length === CoachProfileData.length) {
+        if (selectedUsers.length === CoachProfileData.length) {
             setSelectedUsers([])
         } else {
             setSelectedUsers(CoachProfileData.map((user) => user.id.toString()))
@@ -165,7 +165,12 @@ export default function Approvals() {
                                     <Table>
                                         <TableHeader>
                                             <TableRow>
-                                                <TableHead className="w-[50px]"></TableHead>
+                                                <TableHead className="w-[50px]">
+                                                    <Checkbox
+                                                        checked={selectedUsers.length === CoachProfileData.length}
+                                                        onCheckedChange={toggleSelectAll}
+                                                    />
+                                                </TableHead>
                                                 <TableHead>Name</TableHead>
                                                 <TableHead>Email</TableHead>
                                                 <TableHead>Phone</TableHead>
@@ -287,7 +292,12 @@ export default function Approvals() {
                                 <Table>
                                     <TableHeader>
                                         <TableRow>
-                                            <TableHead className="w-[50px]"></TableHead>
+                                            <TableHead className="w-[50px]">
+                                                <Checkbox
+                                                    checked={selectedUsers.length === OrganisationProfiles.length}
+                                                    onCheckedChange={toggleSelectAll}
+                                                />
+                                            </TableHead>
                                             <TableHead>Organisation</TableHead>
                                             <TableHead>Location</TableHead>
                                             <TableHead>Contact</TableHead>
@@ -408,7 +418,12 @@ export default function Approvals() {
                                 <Table>
                                     <TableHeader>
                                         <TableRow>
-                                            <TableHead className="w-[50px]"></TableHead>
+                                            <TableHead className="w-[50px]">
+                                                <Checkbox
+                                                    checked={selectedUsers.length === GoogleMapListings.length}
+                                                    onCheckedChange={toggleSelectAll}
+                                                />
+                                            </TableHead>
                                             <TableHead>Listing</TableHead>
                                             <TableHead>Address</TableHead>
                                             <TableHead>Linked Org</TableHead>
@@ -524,7 +539,12 @@ export default function Approvals() {
                                 <Table>
                                     <TableHeader>
                                         <TableRow>
-                                            <TableHead className="w-[50px]"></TableHead>
+                                            <TableHead className="w-[50px]">
+                                                <Checkbox
+                                                    checked={selectedUsers.length === FormsSubmittedData.length}
+                                                    onCheckedChange={toggleSelectAll}
+                                                />
+                                            </TableHead>
                                             <TableHead>User</TableHead>
                                             <TableHead>Type</TableHead>
                                             <TableHead>Name</TableHead>
