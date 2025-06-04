@@ -2626,3 +2626,150 @@ export const orgTableData = [
     actions: ["View", "Flag"]
   }
 ];
+export const FinancePaymentsTableData = [
+  {
+    "User": "Aisha Khan",
+    "Order ID": "ORD230519201",
+    "Source": "1:1 Session",
+    "Amount": "₹2,800",
+    "Code Used": "WELCOME25",
+    "Payment Date": "18 May 2025",
+    "Status": "Paid",
+    "PG Charges": "₹56",
+    "Aimshala Earning": "₹336",
+    "Partner Earning": "₹2,408",
+    "Total Earning": "₹2,800",
+    "Payout Status": "Paid"
+  },
+  {
+    "User": "Rohit Verma",
+    "Order ID": "ORD230518199",
+    "Source": "Assessment",
+    "Amount": "₹4,200",
+    "Code Used": "TESTPASS",
+    "Payment Date": "18 May 2025",
+    "Status": "Paid",
+    "PG Charges": "₹84",
+    "Aimshala Earning": "₹504",
+    "Partner Earning": "₹3,612",
+    "Total Earning": "₹4,200",
+    "Payout Status": "Paid"
+  },
+  {
+    "User": "Karishma Nair",
+    "Order ID": "ORD230517187",
+    "Source": "Masterclass",
+    "Amount": "₹6,000",
+    "Code Used": "SPRING100",
+    "Payment Date": "17 May 2025",
+    "Status": "Refunded",
+    "PG Charges": "₹120",
+    "Aimshala Earning": "₹720",
+    "Partner Earning": "₹5,160",
+    "Total Earning": "₹6,000",
+    "Payout Status": "Failed"
+  },
+  {
+    "User": "Karan Mehta",
+    "Order ID": "ORD230516175",
+    "Source": "Subscription",
+    "Amount": "₹3,900",
+    "Code Used": "SUBSAVE20",
+    "Payment Date": "16 May 2025",
+    "Status": "Pending",
+    "PG Charges": "₹78",
+    "Aimshala Earning": "₹468",
+    "Partner Earning": "₹3,354",
+    "Total Earning": "₹3,900",
+    "Payout Status": "Pending"
+  }
+]
+export const FinancePayoutsTableData = [
+  {
+    "Name": "Nisha Yadav",
+    "Request ID": "WDR230518110",
+    "Amount": "₹2,500",
+    "Partner Balance": "₹6,700",
+    "Approval Type": "Auto",
+    "Date": "18 May 2025",
+    "Status": "Approved",
+    "Notes": "Credited to bank account (UTR: BANK5432109876)",
+    "Actions": ["View", "Download"]
+  },
+  {
+    "Name": "Gaurav Thakur",
+    "Request ID": "WDR230517104",
+    "Amount": "₹3,200",
+    "Partner Balance": "₹7,100",
+    "Approval Type": "Manual",
+    "Date": "17 May 2025",
+    "Status": "Pending",
+    "Notes": "Awaiting finance verification",
+    "Actions": ["Approve", "Reject"]
+  },
+  {
+    "Name": "Sakshi Bhandari",
+    "Request ID": "WDR230516099",
+    "Amount": "₹1,700",
+    "Partner Balance": "₹2,000",
+    "Approval Type": "Manual",
+    "Date": "16 May 2025",
+    "Status": "Rejected",
+    "Notes": "Bank account details mismatch",
+    "Actions": ["Review", "Message"]
+  },
+  {
+    "Name": "Parth Trivedi",
+    "Request ID": "WDR230515086",
+    "Amount": "₹2,900",
+    "Partner Balance": "₹5,800",
+    "Approval Type": "Auto",
+    "Date": "15 May 2025",
+    "Status": "Approved",
+    "Notes": "Credited to bank account (UTR: BANK9876543210)",
+    "Actions": ["Invoice", "Download"]
+  }
+]
+export const FinanceCommissionsTableData = [
+  {
+    "Name": "Neeraj Sharma",
+    "Role": "Coach",
+    "Commission Type": "Session",
+    "Linked Session/Order": "ORD230518121",
+    "Amount": "₹660",
+    "Date Earned": "18 May 2025",
+    "Status": "Paid",
+    "Actions": ["View", "Invoice"]
+  },
+  {
+    "Name": "Priya Verma",
+    "Role": "BA",
+    "Commission Type": "Referral",
+    "Linked Session/Order": "REF20240517001",
+    "Amount": "₹500",
+    "Date Earned": "17 May 2025",
+    "Status": "Paid",
+    "Actions": ["Details"]
+  },
+  {
+    "Name": "Rahul Sen",
+    "Role": "Consultant",
+    "Commission Type": "Campaign",
+    "Linked Session/Order": "CMP230516009",
+    "Amount": "₹1,200",
+    "Date Earned": "16 May 2025",
+    "Status": "Pending",
+    "Actions": ["Approve", "Cancel"]
+  },
+  {
+    "Name": "Anjali Rao",
+    "Role": "Partner",
+    "Commission Type": "Referral",
+    "Linked Session/Order": "REF20240515014",
+    "Amount": "₹900",
+    "Date Earned": "15 May 2025",
+    "Status": "Paid",
+    "Actions": ["Invoice"]
+  }
+]
+

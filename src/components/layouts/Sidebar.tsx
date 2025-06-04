@@ -74,10 +74,10 @@ const SidebarItems = [
     {
         title: "Finance",
         items: [
-            { content: "Payments", url: "/payments" },
-            { content: "Payout", url: "/payouts" },
-            { content: "P&L", url: "/pl" },
-            { content: "Reports", url: "/reports" },
+            { content: "Payments", url: "/financePayments" },
+            { content: "Payout", url: "/financePayouts" },
+            { content: "Commissions", url: "/financeCommissions" },
+        
         ],
         isActive: true,
     },

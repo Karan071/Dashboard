@@ -14,7 +14,9 @@ import FAQSPage from "@/pages/CMS/FAQ";
 import Explorer from "@/pages/Users/Explorer/Explorer";
 import Coach from "@/pages/Users/Coach/Coach";
 import Organisations from "@/pages/Users/Organisation/Organisations";
-
+import FinancePayments from "@/pages/Finance/FinancePayments";
+import FinancePayouts from "@/pages/Finance/FinancePayouts";
+import FinanceCommissions from "@/pages/Finance/FinanceCommission";
 export default function AppRoutes() {
     return (
         <Routes>
@@ -34,6 +36,15 @@ export default function AppRoutes() {
             <Route path="/surveys" element={<Surveys />} />
             <Route path="/helpArticles" element={<HelpArticles />} />
             <Route path="/faqspages" element={<FAQSPage />} />
+            <Route path="/financePayments" element={<FinancePayments />} />
+            <Route path="/financePayouts" element={<FinancePayouts />} />
+            <Route path="/financeCommissions" element={<FinanceCommissions />} />
+
+            
+
+            
+            
+            
 
             <Route path="*" element={<NotFound />} />
         </Routes>
