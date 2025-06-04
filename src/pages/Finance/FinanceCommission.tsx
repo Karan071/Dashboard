@@ -1,4 +1,4 @@
-import { Building2, UserCheck, Globe, Clock, Link, MessageSquare, Check } from "lucide-react";
+import { Building2, UserCheck, Globe, Clock, Link, MessageSquare } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
