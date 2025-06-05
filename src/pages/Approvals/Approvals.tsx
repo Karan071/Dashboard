@@ -99,15 +99,15 @@ export default function Approvals() {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
                 {stats.map((stat, index) => (
                     <Card key={index}>
-                        <CardHeader className="flex flex-row items-center justify-between">
-                            <CardTitle className="text-md font-medium">{stat.title}</CardTitle>
+                        <CardHeader className="flex items-center justify-start">
                             <div className={`${stat.bgColor} rounded-full p-2`}>
-                                <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                                <stat.icon className={`h-10 w-10 ${stat.color}`} />
+                            </div>
+                            <div className="flex flex-col  ml-2 ">
+                                <div className="text-2xl font-bold">{stat.value}</div>
+                                <div className="text-md font-medium">{stat.title}</div>
                             </div>
                         </CardHeader>
-                        <CardContent>
-                            <div className="text-2xl font-bold">{stat.value}</div>
-                        </CardContent>
                     </Card>
                 ))}
             </div>
@@ -115,43 +115,39 @@ export default function Approvals() {
             <div className="md:col-span-3 mt-6 cursor-pointer p-4">
                 <Tabs value={activeTab} onValueChange={setActiveTab}>
                     <TabsList className="grid w-full h-12 grid-cols-4 gap-2 bg-gray-100 p-1 rounded-lg">
-                        <TabsTrigger 
+                        <TabsTrigger
                             value="coach-Profile"
-                            className={`px-4 py-2 rounded-md transition-all ${
-                                activeTab === 'coach-Profile' 
-                                    ? 'bg-white/90 shadow-sm text-black font-semibold' 
-                                    : 'text-gray-900 hover:bg-gray-200'
-                            }`}
+                            className={`px-4 py-2 rounded-md transition-all ${activeTab === 'coach-Profile'
+                                ? 'bg-white/90 shadow-sm text-black font-semibold'
+                                : 'text-gray-900 hover:bg-gray-200'
+                                }`}
                         >
                             Coach Profile
                         </TabsTrigger>
-                        <TabsTrigger 
+                        <TabsTrigger
                             value="coach-Organisation"
-                            className={`px-4 py-2 rounded-md transition-all ${
-                                activeTab === 'coach-Organisation' 
-                                    ? 'bg-white shadow-sm text-black font-semibold' 
-                                    : 'text-gray-900 hover:bg-gray-200'
-                            }`}
+                            className={`px-4 py-2 rounded-md transition-all ${activeTab === 'coach-Organisation'
+                                ? 'bg-white shadow-sm text-black font-semibold'
+                                : 'text-gray-900 hover:bg-gray-200'
+                                }`}
                         >
                             Organisation
                         </TabsTrigger>
-                        <TabsTrigger 
+                        <TabsTrigger
                             value="coach-googleMap"
-                            className={`px-4 py-2 rounded-md transition-all ${
-                                activeTab === 'coach-googleMap' 
-                                    ? 'bg-white shadow-sm text-black font-semibold' 
-                                    : 'text-gray-900 hover:bg-gray-200'
-                            }`}
+                            className={`px-4 py-2 rounded-md transition-all ${activeTab === 'coach-googleMap'
+                                ? 'bg-white shadow-sm text-black font-semibold'
+                                : 'text-gray-900 hover:bg-gray-200'
+                                }`}
                         >
                             Google Map
                         </TabsTrigger>
-                        <TabsTrigger 
+                        <TabsTrigger
                             value="coach-form"
-                            className={`px-4 py-2 rounded-md transition-all ${
-                                activeTab === 'coach-form' 
-                                    ? 'bg-white shadow-sm text-black font-semibold' 
-                                    : 'text-gray-900 hover:bg-gray-200'
-                            }`}
+                            className={`px-4 py-2 rounded-md transition-all ${activeTab === 'coach-form'
+                                ? 'bg-white shadow-sm text-black font-semibold'
+                                : 'text-gray-900 hover:bg-gray-200'
+                                }`}
                         >
                             Form Data
                         </TabsTrigger>
