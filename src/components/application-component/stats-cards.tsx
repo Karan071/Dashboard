@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardHeader } from "@/components/ui/card"
 import { Users, UserCheck, UserPlus, MessageSquare, Calendar } from "lucide-react"
 const stats = [
   {

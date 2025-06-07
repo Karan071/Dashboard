@@ -6,7 +6,7 @@ import {
   Check,
   Plus,
 } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 import {
   Table,
   TableHeader,

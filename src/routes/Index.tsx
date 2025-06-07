@@ -10,22 +10,27 @@ import Libraries from "@/pages/CMS/Libraries";
 import Surveys from "@/pages/CMS/Surveys";
 import HelpArticles from "@/pages/CMS/HelpArticles";
 import FAQSPage from "@/pages/CMS/FAQ";
-
 import Explorer from "@/pages/Users/Explorer/Explorer";
 import Coach from "@/pages/Users/Coach/Coach";
 import Organisations from "@/pages/Users/Organisation/Organisations";
 import FinancePayments from "@/pages/Finance/FinancePayments";
 import FinancePayouts from "@/pages/Finance/FinancePayouts";
 import FinanceCommissions from "@/pages/Finance/FinanceCommission";
+import Assessments from "@/pages/Products/Assessments";
+
+
 export default function AppRoutes() {
     return (
         <Routes>
+            {/* User types */}
             <Route path="/explorers" element={<Explorer />} />
             <Route path="/coaches" element={<Coach />} />
-            <Route path="/organisations" element={<Organisations/>} />
+            <Route path="/organisations" element={<Organisations />} />
+            
 
-
+            {/* Approvals */}
             <Route path="/approvals" element={<Approvals />} />
+
             {/* CMS routings  */}
             <Route path="/insights" element={<Insights />} />
             <Route path="/videoLibrary" element={<VideoLibrary />} />
@@ -36,16 +41,15 @@ export default function AppRoutes() {
             <Route path="/surveys" element={<Surveys />} />
             <Route path="/helpArticles" element={<HelpArticles />} />
             <Route path="/faqspages" element={<FAQSPage />} />
-            
+
+            {/* Finance routings */}
             <Route path="/financePayments" element={<FinancePayments />} />
             <Route path="/financePayouts" element={<FinancePayouts />} />
             <Route path="/financeCommissions" element={<FinanceCommissions />} />
 
-            
+            {/* Products */}
+            <Route path="/assessments" element={<Assessments />} />
 
-            
-            
-            
 
             <Route path="*" element={<NotFound />} />
         </Routes>
