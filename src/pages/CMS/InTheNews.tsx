@@ -68,12 +68,12 @@ const stats = [
   },
 ];
 
-function AdvancedFilters({ 
-  filters, 
-  setFilters, 
-  onReset, 
-  onApply 
-}: { 
+function AdvancedFilters({
+  filters,
+  setFilters,
+  onReset,
+  onApply
+}: {
   filters: Filters;
   setFilters: (filters: Filters) => void;
   onReset: () => void;
@@ -88,8 +88,8 @@ function AdvancedFilters({
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-2">
             <label className="text-sm font-medium">Source</label>
-            <Input 
-              placeholder="Search by news source" 
+            <Input
+              placeholder="Search by news source"
               className="mt-2"
               value={filters.source}
               onChange={(e) => setFilters({ ...filters, source: e.target.value })}
@@ -100,12 +100,12 @@ function AdvancedFilters({
             <label className="text-sm font-medium">Status</label>
             <div className="flex flex-wrap gap-4 mt-2">
               <div className="flex items-center space-x-2">
-                <Checkbox 
+                <Checkbox
                   id="published"
                   checked={filters.status.published}
-                  onCheckedChange={(checked) => 
-                    setFilters({ 
-                      ...filters, 
+                  onCheckedChange={(checked) =>
+                    setFilters({
+                      ...filters,
                       status: { ...filters.status, published: checked as boolean }
                     })
                   }
@@ -115,12 +115,12 @@ function AdvancedFilters({
                 </label>
               </div>
               <div className="flex items-center space-x-2">
-                <Checkbox 
+                <Checkbox
                   id="pending"
                   checked={filters.status.pending}
-                  onCheckedChange={(checked) => 
-                    setFilters({ 
-                      ...filters, 
+                  onCheckedChange={(checked) =>
+                    setFilters({
+                      ...filters,
                       status: { ...filters.status, pending: checked as boolean }
                     })
                   }
@@ -135,7 +135,7 @@ function AdvancedFilters({
           <div className="space-y-2">
             <label className="text-sm font-medium">Date Range</label>
             <div className="mt-2">
-              <DatePickerWithRange 
+              <DatePickerWithRange
                 value={filters.dateRange}
                 onChange={(range) => setFilters({ ...filters, dateRange: range })}
               />
@@ -237,20 +237,18 @@ export default function InTheNews() {
   return (
     <div className="p-4">
       {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
         {stats.map((stat, index) => (
           <Card key={index}>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-md font-medium">
-                {stat.title}
-              </CardTitle>
+            <CardHeader className="flex items-center justify-start">
               <div className={`${stat.bgColor} rounded-full p-2`}>
-                <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                <stat.icon className={`h-10 w-10 ${stat.color}`} />
+              </div>
+              <div className="flex flex-col  ml-2 ">
+                <div className="text-2xl font-bold">{stat.value}</div>
+                <div className="text-md font-medium">{stat.title}</div>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-            </CardContent>
           </Card>
         ))}
       </div>
@@ -278,7 +276,7 @@ export default function InTheNews() {
       {/* News Mentions Table */}
       <div>
         <h2 className="heading-title">News Mentions</h2>
-        
+
         {/* Selection Header */}
         <div className="flex items-center justify-between border-b p-4">
           <div className="flex items-center gap-2">
@@ -425,8 +423,8 @@ export default function InTheNews() {
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
-          
-        </div> 
+
+        </div>
       </div>
     </div>
   );

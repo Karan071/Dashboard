@@ -6,7 +6,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Pen,
-  
+
   Play,
   Trash,
 } from "lucide-react";
@@ -101,28 +101,26 @@ export default function Surveys() {
   return (
     <div className="p-4">
       {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
         {stats.map((stat, index) => (
           <Card key={index}>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-md font-medium">
-                {stat.title}
-              </CardTitle>
+            <CardHeader className="flex items-center justify-start">
               <div className={`${stat.bgColor} rounded-full p-2`}>
-                <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                <stat.icon className={`h-10 w-10 ${stat.color}`} />
+              </div>
+              <div className="flex flex-col  ml-2 ">
+                <div className="text-2xl font-bold">{stat.value}</div>
+                <div className="text-md font-medium">{stat.title}</div>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-            </CardContent>
           </Card>
         ))}
       </div>
 
       {/* Surveys Table */}
-      <div>
+      <div className="mt-6">
         <h2 className="heading-title">Surveys</h2>
-        
+
         {/* Selection Header */}
         <div className="flex items-center justify-between border-b p-4">
           <div className="flex items-center gap-2">
@@ -141,7 +139,7 @@ export default function Surveys() {
             )}
           </div>
 
-          {selectedSurveys.length > 0 && ( 
+          {selectedSurveys.length > 0 && (
             <div className="flex gap-2">
               <Button variant="outline" size="sm">
                 <Bell className="mr-2 h-4 w-4" />
@@ -222,12 +220,12 @@ export default function Surveys() {
                             action === "Results"
                               ? "text-[#000000]"
                               : action === "Close"
-                              ? "text-[#000000]"
-                              : action === "Activate"
-                              ? "text-[#000000]"
-                              : action === "Delete"
-                              ? "text-[#000000]"
-                              : ""
+                                ? "text-[#000000]"
+                                : action === "Activate"
+                                  ? "text-[#000000]"
+                                  : action === "Delete"
+                                    ? "text-[#000000]"
+                                    : ""
                           }
                         >
                           {actionToIcon[action as keyof typeof actionToIcon]}

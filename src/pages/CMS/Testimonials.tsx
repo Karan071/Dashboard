@@ -94,26 +94,24 @@ export default function Testimonials() {
   return (
     <div className="p-4">
       {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
         {stats.map((stat, index) => (
           <Card key={index}>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-md font-medium">
-                {stat.title}
-              </CardTitle>
+            <CardHeader className="flex items-center justify-start">
               <div className={`${stat.bgColor} rounded-full p-2`}>
-                <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                <stat.icon className={`h-10 w-10 ${stat.color}`} />
+              </div>
+              <div className="flex flex-col  ml-2 ">
+                <div className="text-2xl font-bold">{stat.value}</div>
+                <div className="text-md font-medium">{stat.title}</div>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-            </CardContent>
           </Card>
         ))}
       </div>
 
       {/* Testimonials Table */}
-      <div>
+      <div className="mt-6">
         <h2 className="heading-title">Testimonials</h2>
         <div className="overflow-x-auto mt-2">
           <Table>
@@ -132,7 +130,7 @@ export default function Testimonials() {
                 <TableHead>Name</TableHead>
                 <TableHead>Role</TableHead>
                 <TableHead>Category</TableHead>
-                 <TableHead>For</TableHead>
+                <TableHead>For</TableHead>
                 <TableHead>Type</TableHead>
                 <TableHead>Content Preview</TableHead>
                 <TableHead>Date</TableHead>
@@ -163,7 +161,7 @@ export default function Testimonials() {
                   <TableCell>
                     <Badge variant="outline">{testimonial.category}</Badge>
                   </TableCell>
-                   <TableCell>
+                  <TableCell>
                     <Badge variant="outline">{testimonial.audience}</Badge>
                   </TableCell>
                   <TableCell>{testimonial.type}</TableCell>

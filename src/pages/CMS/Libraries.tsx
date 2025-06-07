@@ -64,8 +64,8 @@ const tabs = [
 // Define stats structure for each tab
 const getStats = (activeTab: string) => {
   let data: any[] = [];
-  
-  switch(activeTab) {
+
+  switch (activeTab) {
     case "library":
       data = LibraryTableData;
       break;
@@ -79,7 +79,7 @@ const getStats = (activeTab: string) => {
       data = NGOsTableData;
       break;
   }
-  
+
   return [
     {
       title: "Total Entries",
@@ -120,7 +120,7 @@ export default function Libraries() {
 
   // Get current data based on active tab
   const getCurrentData = () => {
-    switch(activeTab) {
+    switch (activeTab) {
       case "library": return LibraryTableData as LibraryResource[];
       case "exams": return ExamsTableData as DateBasedResource[];
       case "scholarships": return ScholarshipsTableData as DateBasedResource[];
@@ -139,7 +139,7 @@ export default function Libraries() {
 
   const currentData = getCurrentData();
   const stats = getStats(activeTab);
-  
+
   const totalPages = Math.ceil(currentData.length / recordsPerPage);
   const indexLast = page * recordsPerPage;
   const indexFirst = indexLast - recordsPerPage;
@@ -178,28 +178,26 @@ export default function Libraries() {
   return (
     <div className="p-4">
       {/* Tabs Navigation */}
-    
+
 
       {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
         {stats.map((stat, index) => (
           <Card key={index}>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-md font-medium">
-                {stat.title}
-              </CardTitle>
+            <CardHeader className="flex items-center justify-start">
               <div className={`${stat.bgColor} rounded-full p-2`}>
-                <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                <stat.icon className={`h-10 w-10 ${stat.color}`} />
+              </div>
+              <div className="flex flex-col  ml-2 ">
+                <div className="text-2xl font-bold">{stat.value}</div>
+                <div className="text-md font-medium">{stat.title}</div>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-            </CardContent>
           </Card>
         ))}
       </div>
- {/* Tabs Navigation */}
-      <div className="flex space-x-4 mb-6 border-b">
+      {/* Tabs Navigation */}
+      <div className="flex space-x-4 mb-6 border-b mt-6">
         {tabs.map((tab) => (
           <Button
             key={tab.id}
@@ -235,8 +233,8 @@ export default function Libraries() {
                 <TableHead>Audience</TableHead>
                 <TableHead>Source</TableHead>
                 <TableHead>
-                  {activeTab === "library" || activeTab === "ngos" 
-                    ? "Last Updated" 
+                  {activeTab === "library" || activeTab === "ngos"
+                    ? "Last Updated"
                     : "Upcoming Date"}
                 </TableHead>
                 <TableHead>Status</TableHead>
@@ -262,12 +260,12 @@ export default function Libraries() {
                   </TableCell>
                   <TableCell>{item.for}</TableCell>
                   <TableCell>{item.source}</TableCell>
-                 <TableCell>
+                  <TableCell>
                     {isLibraryOrNGO(item)
                       ? item.lastUpdated ?? "-"
                       : isDateBased(item)
-                      ? item.upcomingDate ?? "-"
-                      : "-"}
+                        ? item.upcomingDate ?? "-"
+                        : "-"}
                   </TableCell>
                   <TableCell>
                     <Badge
@@ -276,8 +274,8 @@ export default function Libraries() {
                         item.status === "Published"
                           ? "bg-green-100 text-green-800"
                           : item.status === "Draft"
-                          ? "bg-yellow-100 text-yellow-800"
-                          : "bg-blue-100 text-blue-800"
+                            ? "bg-yellow-100 text-yellow-800"
+                            : "bg-blue-100 text-blue-800"
                       }
                     >
                       {item.status}

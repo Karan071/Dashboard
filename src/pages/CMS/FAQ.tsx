@@ -82,26 +82,24 @@ export default function FAQSPage() {
   return (
     <div className="p-4">
       {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
         {stats.map((stat, index) => (
           <Card key={index}>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-md font-medium">
-                {stat.title}
-              </CardTitle>
+            <CardHeader className="flex items-center justify-start">
               <div className={`${stat.bgColor} rounded-full p-2`}>
-                <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                <stat.icon className={`h-10 w-10 ${stat.color}`} />
+              </div>
+              <div className="flex flex-col  ml-2 ">
+                <div className="text-2xl font-bold">{stat.value}</div>
+                <div className="text-md font-medium">{stat.title}</div>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-            </CardContent>
           </Card>
         ))}
       </div>
 
       {/* FAQs Table */}
-      <div>
+      <div className="mt-6">
         <h2 className="heading-title">FAQ Pages</h2>
         <div className="overflow-x-auto mt-2">
           <Table>

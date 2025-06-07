@@ -12,7 +12,7 @@ import {
   Trash,
   Bell,
   Download,
-  Filter, 
+  Filter,
   Plus
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -38,7 +38,6 @@ import {
 } from "@/Data";
 import { Input } from "@/components/ui/input";
 
-// Define tab structure
 const tabs = [
   { id: "published", label: "Published", icon: BookOpenCheck },
   { id: "drafts", label: "Drafts", icon: FileEdit },
@@ -53,7 +52,6 @@ interface Filters {
   dateRange: DateRange | undefined;
 }
 
-// Define stats structure for each tab
 const stats = [
   {
     title: "Total Insights Published:",
@@ -295,22 +293,22 @@ export default function Insights() {
   return (
     <div className="p-4">
       {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
         {stats.map((stat, index) => (
           <Card key={index}>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-md font-medium">{stat.title}</CardTitle>
+            <CardHeader className="flex items-center justify-start">
               <div className={`${stat.bgColor} rounded-full p-2`}>
-                <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                <stat.icon className={`h-10 w-10 ${stat.color}`} />
+              </div>
+              <div className="flex flex-col  ml-2 ">
+                <div className="text-2xl font-bold">{stat.value}</div>
+                <div className="text-md font-medium">{stat.title}</div>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-            </CardContent>
           </Card>
         ))}
       </div>
-      <div className="flex justify-end mb-6">
+      <div className="flex justify-end mb-6 mt-6">
         <Button
           variant="outline"
           onClick={() => setFiltersOpen(!filtersOpen)}
@@ -348,7 +346,7 @@ export default function Insights() {
           ))}
         </div>
         <Button>
-          <Plus className="text-white"/>
+          <Plus className="text-white" />
           <span>Add Insight</span>
         </Button>
       </div>

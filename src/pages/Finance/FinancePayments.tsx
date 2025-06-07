@@ -1,14 +1,14 @@
-import { 
- 
-  Clock, 
- 
-  Download, 
-  Filter, 
-  ChevronRight, 
-  ChevronLeft, 
-  Flag, 
-  Eye, 
-  Bell, 
+import {
+
+  Clock,
+
+  Download,
+  Filter,
+  ChevronRight,
+  ChevronLeft,
+  Flag,
+  Eye,
+  Bell,
 
   CreditCard,
   FileText,
@@ -95,18 +95,18 @@ export default function FinancePaymentsPage() {
 
 function FinanceCard() {
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 p-5">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
       {stats.map((stat, index) => (
         <Card key={index}>
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="text-md font-medium">{stat.title}</CardTitle>
+          <CardHeader className="flex items-center justify-start">
             <div className={`${stat.bgColor} rounded-full p-2`}>
-              <stat.icon className={`h-6 w-6 ${stat.color}`} />
+              <stat.icon className={`h-10 w-10 ${stat.color}`} />
+            </div>
+            <div className="flex flex-col  ml-2 ">
+              <div className="text-2xl font-bold">{stat.value}</div>
+              <div className="text-md font-medium">{stat.title}</div>
             </div>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stat.value}</div>
-          </CardContent>
         </Card>
       ))}
     </div>
@@ -115,64 +115,64 @@ function FinanceCard() {
 
 function FinanceFilter() {
   return (
-        <div className="p-4">
-            <Card className="mt-8">
-                <CardHeader>
-                    <CardTitle className="text-lg">Filters</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Filter By: User / Coach / Source / Code</label>
-                            <Input placeholder="Search by user, coach, source or code" className="mt-2" />
-                        </div>
+    <div className="p-4">
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle className="text-lg">Filters</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Filter By: User / Coach / Source / Code</label>
+              <Input placeholder="Search by user, coach, source or code" className="mt-2" />
+            </div>
 
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Transaction Type</label>
-                            <div className="flex flex-wrap gap-4 mt-2">
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="earnings" />
-                                    <label htmlFor="earnings" className="text-sm">
-                                        Earnings
-                                    </label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="refunds" />
-                                    <label htmlFor="refunds" className="text-sm">
-                                        Refunds
-                                    </label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="platform-fee" />
-                                    <label htmlFor="platform-fee" className="text-sm">
-                                        Platform Fee
-                                    </label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="payouts" />
-                                    <label htmlFor="payouts" className="text-sm">
-                                        Payouts
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Transaction Type</label>
+              <div className="flex flex-wrap gap-4 mt-2">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="earnings" />
+                  <label htmlFor="earnings" className="text-sm">
+                    Earnings
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="refunds" />
+                  <label htmlFor="refunds" className="text-sm">
+                    Refunds
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="platform-fee" />
+                  <label htmlFor="platform-fee" className="text-sm">
+                    Platform Fee
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="payouts" />
+                  <label htmlFor="payouts" className="text-sm">
+                    Payouts
+                  </label>
+                </div>
+              </div>
+            </div>
 
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Date Range</label>
-                            <div className="mt-2">
-                                <DatePickerWithRange/>
-                            </div>
-                        </div>
-                    </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Date Range</label>
+              <div className="mt-2">
+                <DatePickerWithRange />
+              </div>
+            </div>
+          </div>
 
-                    <div className="mt-8 flex justify-end gap-2">
-                        <Button variant="outline">Reset</Button>
-                        <Button>Apply Filters</Button>
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
-    )
+          <div className="mt-8 flex justify-end gap-2">
+            <Button variant="outline">Reset</Button>
+            <Button>Apply Filters</Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
 }
 
 function FinancePaymentsTable() {
@@ -277,8 +277,8 @@ function FinancePaymentsTable() {
                       payment.Status === "Paid"
                         ? "bg-green-100 text-green-800"
                         : payment.Status === "Pending"
-                        ? "bg-yellow-100 text-yellow-800"
-                        : "bg-red-100 text-red-800"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-red-100 text-red-800"
                     }
                   >
                     {payment.Status}

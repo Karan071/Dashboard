@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 
-import { Download, Filter, ChevronRight, ChevronLeft,  Eye, Bell} from "lucide-react";
+import { Download, Filter, ChevronRight, ChevronLeft, Eye, Bell } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { DatePickerWithRange } from "@/components/application-component/date-range-picker";
 import { useState } from "react";
@@ -12,182 +12,182 @@ import { Badge } from "@/components/ui/badge";
 import { FinanceCommissionsTableData } from "@/Data";
 
 const FinanceCommissionStats = [
-    {
-        title: "Total Commissions Earned",
-        value: "1438",
-        icon: Building2,
-        color: "text-blue-500",
-        bgColor: "bg-blue-100",
-    },
-    {
-        title: "Coaches with Commissions",
-        value: "456",
-        icon: UserCheck,
-        color: "text-green-500",
-        bgColor: "bg-green-100",
-    },
-    {
-        title: "Pending Payouts",
-        value: "982",
-        icon: Globe,
-        color: "text-purple-500",
-        bgColor: "bg-purple-100",
-    },
-    {
-        title: "Pending Approvals",
-        value: "12",
-        icon: Clock,
-        color: "text-yellow-500",
-        bgColor: "bg-yellow-100",
-    },
-    {
-        title: "Session Commissions",
-        value: "182",
-        icon: Link,
-        color: "text-red-500",
-        bgColor: "bg-red-100",
-    },
-    {
-        title: "Product Commissions",
-        value: "720+",
-        icon: MessageSquare,
-        color: "text-indigo-500",
-        bgColor: "bg-indigo-100",
-    }
+  {
+    title: "Total Commissions Earned",
+    value: "1438",
+    icon: Building2,
+    color: "text-blue-500",
+    bgColor: "bg-blue-100",
+  },
+  {
+    title: "Coaches with Commissions",
+    value: "456",
+    icon: UserCheck,
+    color: "text-green-500",
+    bgColor: "bg-green-100",
+  },
+  {
+    title: "Pending Payouts",
+    value: "982",
+    icon: Globe,
+    color: "text-purple-500",
+    bgColor: "bg-purple-100",
+  },
+  {
+    title: "Pending Approvals",
+    value: "12",
+    icon: Clock,
+    color: "text-yellow-500",
+    bgColor: "bg-yellow-100",
+  },
+  {
+    title: "Session Commissions",
+    value: "182",
+    icon: Link,
+    color: "text-red-500",
+    bgColor: "bg-red-100",
+  },
+  {
+    title: "Product Commissions",
+    value: "720+",
+    icon: MessageSquare,
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-100",
+  }
 ];
 
 export default function FinanceCommissions() {
-    const [showFilter, setShowFilter] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
 
-    return <div className="p-6">
-        <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-            <h1 className="text-2xl font-bold">Finance Commissions</h1>
-            <div className="flex gap-2">
-                <Button variant="outline" className="flex items-center gap-2">
-                    <Download className="h-4 w-4" />
-                    Export
-                </Button>
-                <Button>Bulk Actions</Button>
-            </div>
-        </div>
-        <div>
-            <div>
-                <FinanceCommissionCard />
-                {showFilter && <FinanceCommissionFilter />}
-                <div className="flex justify-end mt-4 p-4">
-                    <Button
-                        variant="outline"
-                        onClick={() => setShowFilter(!showFilter)}
-                        className="flex items-center gap-2"
-                    >
-                        <Filter className="h-4 w-4" />
-                        {showFilter ? "Hide Filters" : "Show Filters"}
-                    </Button>
-                </div>
-                <FinanceCommissionsTable />
-            </div>
-        </div>
+  return <div className="p-6">
+    <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-center">
+      <h1 className="text-2xl font-bold">Finance Commissions</h1>
+      <div className="flex gap-2">
+        <Button variant="outline" className="flex items-center gap-2">
+          <Download className="h-4 w-4" />
+          Export
+        </Button>
+        <Button>Bulk Actions</Button>
+      </div>
     </div>
+    <div>
+      <div>
+        <FinanceCommissionCard />
+        {showFilter && <FinanceCommissionFilter />}
+        <div className="flex justify-end mt-4 p-4">
+          <Button
+            variant="outline"
+            onClick={() => setShowFilter(!showFilter)}
+            className="flex items-center gap-2"
+          >
+            <Filter className="h-4 w-4" />
+            {showFilter ? "Hide Filters" : "Show Filters"}
+          </Button>
+        </div>
+        <FinanceCommissionsTable />
+      </div>
+    </div>
+  </div>
 }
 
 function FinanceCommissionCard() {
-    return (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 p-5">
-            {FinanceCommissionStats.map((stat, index) => (
-                <Card key={index}>
-                    <CardHeader className="flex flex-row items-center justify-between">
-                        <CardTitle className="text-md font-medium">{stat.title}</CardTitle>
-                        <div className={`${stat.bgColor} rounded-full p-2`}>
-                            <stat.icon className={`h-6 w-6 ${stat.color}`} />
-                        </div>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stat.value}</div>
-                    </CardContent>
-                </Card>
-            ))}
-        </div>
-    )
+  return (
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
+      {FinanceCommissionStats.map((stat, index) => (
+        <Card key={index}>
+          <CardHeader className="flex items-center justify-start">
+            <div className={`${stat.bgColor} rounded-full p-2`}>
+              <stat.icon className={`h-10 w-10 ${stat.color}`} />
+            </div>
+            <div className="flex flex-col  ml-2 ">
+              <div className="text-2xl font-bold">{stat.value}</div>
+              <div className="text-md font-medium">{stat.title}</div>
+            </div>
+          </CardHeader>
+        </Card>
+      ))}
+    </div>
+  )
 }
 
 function FinanceCommissionFilter() {
-    return (
-        <div className="p-4">
-            <Card className="mt-8">
-                <CardHeader>
-                    <CardTitle className="text-lg">Filters</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Search by Name / Code / Role</label>
-                            <Input placeholder="Search by name, code or role" className="mt-2" />
-                        </div>
+  return (
+    <div className="p-4">
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle className="text-lg">Filters</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Search by Name / Code / Role</label>
+              <Input placeholder="Search by name, code or role" className="mt-2" />
+            </div>
 
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Commission Type</label>
-                            <div className="flex flex-wrap gap-4 mt-2">
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="Session" />
-                                    <label htmlFor="Session" className="text-sm">
-                                        Session
-                                    </label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="Referral" />
-                                    <label htmlFor="Referral" className="text-sm">
-                                        Referral
-                                    </label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="Campaign" />
-                                    <label htmlFor="Campaign" className="text-sm">
-                                        Campaign
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Commission Type</label>
+              <div className="flex flex-wrap gap-4 mt-2">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="Session" />
+                  <label htmlFor="Session" className="text-sm">
+                    Session
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="Referral" />
+                  <label htmlFor="Referral" className="text-sm">
+                    Referral
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="Campaign" />
+                  <label htmlFor="Campaign" className="text-sm">
+                    Campaign
+                  </label>
+                </div>
+              </div>
+            </div>
 
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Status</label>
-                            <div className="flex flex-wrap gap-4 mt-2">
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="paid" />
-                                    <label htmlFor="paid" className="text-sm">
-                                        Paid
-                                    </label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="pending" />
-                                    <label htmlFor="pending" className="text-sm">
-                                        Pending
-                                    </label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="cancelled" />
-                                    <label htmlFor="cancelled" className="text-sm">
-                                        Cancelled
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Status</label>
+              <div className="flex flex-wrap gap-4 mt-2">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="paid" />
+                  <label htmlFor="paid" className="text-sm">
+                    Paid
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="pending" />
+                  <label htmlFor="pending" className="text-sm">
+                    Pending
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="cancelled" />
+                  <label htmlFor="cancelled" className="text-sm">
+                    Cancelled
+                  </label>
+                </div>
+              </div>
+            </div>
 
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Date Range</label>
-                            <div className="mt-2">
-                                <DatePickerWithRange  />
-                            </div>
-                        </div>
-                    </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Date Range</label>
+              <div className="mt-2">
+                <DatePickerWithRange />
+              </div>
+            </div>
+          </div>
 
-                    <div className="mt-8 flex justify-end gap-2 ">
-                        <Button variant="outline">Reset</Button>
-                        <Button>Apply Filters</Button>
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
-    )
+          <div className="mt-8 flex justify-end gap-2 ">
+            <Button variant="outline">Reset</Button>
+            <Button>Apply Filters</Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
 }
 function FinanceCommissionsTable() {
   const [selectedCommissions, setSelectedCommissions] = useState<string[]>([]);
@@ -285,8 +285,8 @@ function FinanceCommissionsTable() {
                       commission.Status === "Paid"
                         ? "bg-green-100 text-green-800"
                         : commission.Status === "Pending"
-                        ? "bg-yellow-100 text-yellow-800"
-                        : "bg-red-100 text-red-800"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-red-100 text-red-800"
                     }
                   >
                     {commission.Status}

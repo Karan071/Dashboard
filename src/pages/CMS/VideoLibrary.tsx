@@ -46,7 +46,7 @@ const stats = [
   },
   {
     title: "Video Formats",
-    value: "16:9 (Web), 9:16 (Mobile)",
+    value: "16:9 (Web)",
     icon: MessageSquare,
     color: "text-yellow-500",
     bgColor: "bg-yellow-100",
@@ -63,8 +63,6 @@ const stats = [
 export default function VideoLibrary() {
   const [selectedUsers, setSelectedUsers] = useState<String[]>([]);
   const [videoPage, setVideoPage] = useState(1);
- 
-
 
   const recordsPerPage = 5;
 
@@ -91,22 +89,20 @@ export default function VideoLibrary() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
         {stats.map((stat, index) => (
           <Card key={index}>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-md font-medium">
-                {stat.title}
-              </CardTitle>
+            <CardHeader className="flex items-center justify-start">
               <div className={`${stat.bgColor} rounded-full p-2`}>
-                <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                <stat.icon className={`h-10 w-10 ${stat.color}`} />
+              </div>
+              <div className="flex flex-col  ml-2 ">
+                <div className="text-2xl font-bold">{stat.value}</div>
+                <div className="text-md font-medium">{stat.title}</div>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-            </CardContent>
           </Card>
         ))}
       </div>
       {/* video Table */}
-      <div>
+      <div className="mt-6">
         <h2 className="heading-title">Published Insights</h2>
         <div>
           <div className="overflow-x-auto mt-2">
@@ -152,7 +148,7 @@ export default function VideoLibrary() {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <div className="text-sm">{video.speaker}</div> 
+                      <div className="text-sm">{video.speaker}</div>
                     </TableCell>
                     <TableCell>
                       <div className="text-sm">{video.mode}</div>
@@ -192,13 +188,13 @@ export default function VideoLibrary() {
                       >
                         {video.status}
                       </Badge>
-                      </TableCell>
+                    </TableCell>
                     <TableCell>
                       <div className="flex justify-center gap-2">
                         <Button
                           variant="ghost"
                           size="icon"
-                          // onClick={() => navigate(`/user-details/${user.id}`)}
+                        // onClick={() => navigate(`/user-details/${user.id}`)}
                         >
                           <Eye className="h-4 w-4" />
                           <span className="sr-only">View</span>

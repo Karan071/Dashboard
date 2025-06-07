@@ -36,6 +36,7 @@ export default function AppRoutes() {
             <Route path="/surveys" element={<Surveys />} />
             <Route path="/helpArticles" element={<HelpArticles />} />
             <Route path="/faqspages" element={<FAQSPage />} />
+            
             <Route path="/financePayments" element={<FinancePayments />} />
             <Route path="/financePayouts" element={<FinancePayouts />} />
             <Route path="/financeCommissions" element={<FinanceCommissions />} />
