@@ -28,11 +28,16 @@ const SidebarItems = [
             { content: "Assessments", url: "/assessments" },
             { content: "Sessions", url: "/sessions" },
             { content: "Sessions Pool", url: "/sessions-pool" },
-            { content: "Masterclasses", url: "/masterclasses" },
-            { content: "Learning", url: "/learning" },
-            { content: "Access Code", url: "/access-code" },
+            // { content: "Masterclasses", url: "/masterclasses" },
+            // { content: "Learning", url: "/learning" },
         ],
         isActive: true,
+    },
+    {
+        title: "Access Code",
+        url: "/access-code",
+        isSingleLink: false,
+        isActive: false
     },
     {
         title: "CMS",
