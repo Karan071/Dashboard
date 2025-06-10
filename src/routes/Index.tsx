@@ -17,6 +17,8 @@ import FinancePayments from "@/pages/Finance/FinancePayments";
 import FinancePayouts from "@/pages/Finance/FinancePayouts";
 import FinanceCommissions from "@/pages/Finance/FinanceCommission";
 import Assessments from "@/pages/Products/Assessments";
+import Sessions from "@/pages/Products/Sessions";
+import SessionPool from "@/pages/Products/SessionPool";
 
 
 export default function AppRoutes() {
@@ -26,7 +28,7 @@ export default function AppRoutes() {
             <Route path="/explorers" element={<Explorer />} />
             <Route path="/coaches" element={<Coach />} />
             <Route path="/organisations" element={<Organisations />} />
-            
+
 
             {/* Approvals */}
             <Route path="/approvals" element={<Approvals />} />
@@ -49,6 +51,8 @@ export default function AppRoutes() {
 
             {/* Products */}
             <Route path="/assessments" element={<Assessments />} />
+            <Route path="/sessions" element={<Sessions />} />
+            <Route path="/sessions-pool" element={<SessionPool />} />
 
 
             <Route path="*" element={<NotFound />} />
