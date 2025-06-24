@@ -1,7 +1,18 @@
+
+
+function StatCards(){
+    return (
+        <div>
+            cards
+        </div>
+    )
+}
+
 export default function SessionPool() {
     return (
         <div>
-            <h1>SessionsPool</h1>
+            <StatCards/>
         </div>
     );
 }
+
