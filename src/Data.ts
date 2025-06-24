@@ -337,7 +337,6 @@ export const mockUsers = [
 ]
 
 
-// A
 export const API = {
   "user": {
     "id": "",
@@ -3323,3 +3322,4 @@ export const UpcomingSessionsTable = [
     "actions": ["View", "Reschedule", "Cancel"]
   }
 ];
+
