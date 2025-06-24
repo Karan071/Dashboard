@@ -2925,3 +2925,401 @@ export const assessmentsTable = [
     actions: ["View", "Edit", "Questions", "Results"],
   },
 ];
+
+export const upcomingAssessmentsTable = [
+  [
+    {
+      "id": 1,
+      "User": "Aarav Mehta",
+      "Coach": "Dr. Seema Rao",
+      "Coach Type": "Counselor",
+      "Date/Time": "18 May, 3:00 PM",
+      "Type": "1:1",
+      "Amount": "₹1,000",
+      "Status Timeline": "Booked (16 May, 2:00 PM) → Auto Approved (16 May, 2:05 PM) → Confirmed (17 May, 9:30 AM)",
+      "Actions": ["View", "Reschedule", "Cancel"]
+    },
+    {
+      "id": 2,
+      "User": "Neha Kapoor",
+      "Coach": "Mr. Rahul Sen",
+      "Coach Type": "Fitness Trainer",
+      "Date/Time": "19 May, 10:00 AM",
+      "Type": "Group",
+      "Amount": "₹800",
+      "Status Timeline": "Booked (17 May, 11:15 AM) → Auto Approved (17 May, 11:20 AM)",
+      "Actions": ["View", "Cancel"]
+    },
+    {
+      "id": 3,
+      "User": "Rohan Gupta",
+      "Coach": "Dr. Pooja Iyer",
+      "Coach Type": "Nutritionist",
+      "Date/Time": "20 May, 5:30 PM",
+      "Type": "1:1",
+      "Amount": "₹1,200",
+      "Status Timeline": "Booked (18 May, 9:45 AM) → Auto Approved (18 May, 9:50 AM) → Confirmed (19 May, 2:00 PM)",
+      "Actions": ["View", "Reschedule", "Cancel"]
+    },
+    {
+      "id": 4,
+      "User": "Simran Singh",
+      "Coach": "Mr. Amit Verma",
+      "Coach Type": "Life Coach",
+      "Date/Time": "21 May, 1:00 PM",
+      "Type": "1:1",
+      "Amount": "₹900",
+      "Status Timeline": "Booked (19 May, 3:20 PM) → Auto Approved (19 May, 3:25 PM)",
+      "Actions": ["View", "Cancel"]
+    },
+    {
+      "id": 5,
+      "User": "Vikram Patel",
+      "Coach": "Ms. Leena Das",
+      "Coach Type": "Yoga Instructor",
+      "Date/Time": "22 May, 8:00 AM",
+      "Type": "Group",
+      "Amount": "₹700",
+      "Status Timeline": "Booked (20 May, 7:00 AM) → Auto Approved (20 May, 7:05 AM) → Confirmed (21 May, 6:30 AM)",
+      "Actions": ["View", "Reschedule", "Cancel"]
+    },
+    {
+      "id": 6,
+      "User": "Priya Sharma",
+      "Coach": "Dr. Manoj Gupta",
+      "Coach Type": "Therapist",
+      "Date/Time": "23 May, 4:00 PM",
+      "Type": "1:1",
+      "Amount": "₹1,500",
+      "Status Timeline": "Booked (21 May, 10:10 AM) → Auto Approved (21 May, 10:15 AM)",
+      "Actions": ["View", "Cancel"]
+    },
+    {
+      "id": 7,
+      "User": "Karan Mehta",
+      "Coach": "Ms. Richa Khanna",
+      "Coach Type": "Career Counselor",
+      "Date/Time": "24 May, 2:30 PM",
+      "Type": "1:1",
+      "Amount": "₹1,100",
+      "Status Timeline": "Booked (22 May, 1:00 PM) → Auto Approved (22 May, 1:05 PM) → Confirmed (23 May, 9:00 AM)",
+      "Actions": ["View", "Reschedule", "Cancel"]
+    },
+    {
+      "id": 8,
+      "User": "Anjali Desai",
+      "Coach": "Mr. Nikhil Rao",
+      "Coach Type": "Sports Coach",
+      "Date/Time": "25 May, 6:00 PM",
+      "Type": "Group",
+      "Amount": "₹750",
+      "Status Timeline": "Booked (23 May, 5:20 PM) → Auto Approved (23 May, 5:25 PM)",
+      "Actions": ["View", "Cancel"]
+    },
+    {
+      "id": 9,
+      "User": "Rahul Nair",
+      "Coach": "Dr. Deepa Menon",
+      "Coach Type": "Dietician",
+      "Date/Time": "26 May, 11:00 AM",
+      "Type": "1:1",
+      "Amount": "₹1,300",
+      "Status Timeline": "Booked (24 May, 8:45 AM) → Auto Approved (24 May, 8:50 AM) → Confirmed (25 May, 10:00 AM)",
+      "Actions": ["View", "Reschedule", "Cancel"]
+    },
+    {
+      "id": 10,
+      "User": "Sneha Roy",
+      "Coach": "Mr. Vikram Singh",
+      "Coach Type": "Mindfulness Coach",
+      "Date/Time": "27 May, 9:30 AM",
+      "Type": "Group",
+      "Amount": "₹650",
+      "Status Timeline": "Booked (25 May, 2:30 PM) → Auto Approved (25 May, 2:35 PM)",
+      "Actions": ["View", "Cancel"]
+    },
+    {
+      "id": 11,
+      "User": "Aditya Joshi",
+      "Coach": "Ms. Kavita Sharma",
+      "Coach Type": "Business Coach",
+      "Date/Time": "28 May, 3:45 PM",
+      "Type": "1:1",
+      "Amount": "₹1,400",
+      "Status Timeline": "Booked (26 May, 12:15 PM) → Auto Approved (26 May, 12:20 PM) → Confirmed (27 May, 11:00 AM)",
+      "Actions": ["View", "Reschedule", "Cancel"]
+    },
+    {
+      "id": 12,
+      "User": "Meera Iyer",
+      "Coach": "Dr. Sunil Kapoor",
+      "Coach Type": "Psychologist",
+      "Date/Time": "29 May, 5:00 PM",
+      "Type": "1:1",
+      "Amount": "₹1,250",
+      "Status Timeline": "Booked (27 May, 4:00 PM) → Auto Approved (27 May, 4:05 PM)",
+      "Actions": ["View", "Cancel"]
+    },
+    {
+      "id": 13,
+      "User": "Sahil Verma",
+      "Coach": "Ms. Anu Patel",
+      "Coach Type": "Leadership Coach",
+      "Date/Time": "30 May, 2:00 PM",
+      "Type": "Group",
+      "Amount": "₹800",
+      "Status Timeline": "Booked (28 May, 9:00 AM) → Auto Approved (28 May, 9:05 AM) → Confirmed (29 May, 8:30 AM)",
+      "Actions": ["View", "Reschedule", "Cancel"]
+    },
+    {
+      "id": 14,
+      "User": "Tara Khanna",
+      "Coach": "Dr. Rohit Deshpande",
+      "Coach Type": "Sleep Specialist",
+      "Date/Time": "31 May, 7:30 PM",
+      "Type": "1:1",
+      "Amount": "₹1,600",
+      "Status Timeline": "Booked (29 May, 6:10 PM) → Auto Approved (29 May, 6:15 PM)",
+      "Actions": ["View", "Cancel"]
+    },
+    {
+      "id": 15,
+      "User": "Devansh Aggarwal",
+      "Coach": "Ms. Priyanka Jain",
+      "Coach Type": "Financial Coach",
+      "Date/Time": "1 June, 4:15 PM",
+      "Type": "1:1",
+      "Amount": "₹1,350",
+      "Status Timeline": "Booked (30 May, 11:25 AM) → Auto Approved (30 May, 11:30 AM) → Confirmed (31 May, 10:00 AM)",
+      "Actions": ["View", "Reschedule", "Cancel"]
+    }
+  ]
+];
+
+export const UpcomingSessionsTable = [
+  {
+    "id": 1,
+    "user": "Aarav Mehta",
+    "coach": "Dr. Seema Rao",
+    "coachType": "Counselor",
+    "dateTime": "18 May, 3:00 PM",
+    "type": "1:1",
+    "amount": "₹1,000",
+    "statusTimeline": [
+      "Booked (16 May, 2:00 PM)",
+      "Auto Approved (16 May, 2:05 PM)",
+      "Confirmed (17 May, 9:30 AM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 2,
+    "user": "Priya Singh",
+    "coach": "Mr. Rajiv Kumar",
+    "coachType": "Fitness Trainer",
+    "dateTime": "20 May, 10:00 AM",
+    "type": "Group",
+    "amount": "₹800",
+    "statusTimeline": [
+      "Booked (18 May, 9:00 AM)",
+      "Auto Approved (18 May, 9:10 AM)",
+      "Confirmed (19 May, 11:00 AM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 3,
+    "user": "Rohan Patel",
+    "coach": "Ms. Nisha Verma",
+    "coachType": "Nutritionist",
+    "dateTime": "21 May, 2:00 PM",
+    "type": "1:1",
+    "amount": "₹1,200",
+    "statusTimeline": [
+      "Booked (19 May, 4:00 PM)",
+      "Auto Approved (19 May, 4:05 PM)",
+      "Confirmed (20 May, 1:00 PM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 4,
+    "user": "Ishaan Sharma",
+    "coach": "Mr. Mohit Bansal",
+    "coachType": "Life Coach",
+    "dateTime": "22 May, 5:00 PM",
+    "type": "1:1",
+    "amount": "₹1,500",
+    "statusTimeline": [
+      "Booked (20 May, 12:00 PM)",
+      "Auto Approved (20 May, 12:10 PM)",
+      "Confirmed (21 May, 3:00 PM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 5,
+    "user": "Sneha Kapoor",
+    "coach": "Dr. Arjun Sen",
+    "coachType": "Psychologist",
+    "dateTime": "23 May, 11:00 AM",
+    "type": "1:1",
+    "amount": "₹2,000",
+    "statusTimeline": [
+      "Booked (21 May, 9:00 AM)",
+      "Auto Approved (21 May, 9:05 AM)",
+      "Confirmed (22 May, 2:00 PM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 6,
+    "user": "Yash Jain",
+    "coach": "Ms. Ritu Sharma",
+    "coachType": "Career Coach",
+    "dateTime": "24 May, 4:00 PM",
+    "type": "Group",
+    "amount": "₹1,000",
+    "statusTimeline": [
+      "Booked (22 May, 3:00 PM)",
+      "Auto Approved (22 May, 3:05 PM)",
+      "Confirmed (23 May, 5:00 PM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 7,
+    "user": "Kavya Nair",
+    "coach": "Mr. Sandeep Joshi",
+    "coachType": "Motivational Coach",
+    "dateTime": "25 May, 1:00 PM",
+    "type": "1:1",
+    "amount": "₹900",
+    "statusTimeline": [
+      "Booked (23 May, 10:00 AM)",
+      "Auto Approved (23 May, 10:05 AM)",
+      "Confirmed (24 May, 12:00 PM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 8,
+    "user": "Ananya Gupta",
+    "coach": "Dr. Neha Rana",
+    "coachType": "Child Counselor",
+    "dateTime": "26 May, 3:00 PM",
+    "type": "1:1",
+    "amount": "₹1,500",
+    "statusTimeline": [
+      "Booked (24 May, 2:00 PM)",
+      "Auto Approved (24 May, 2:05 PM)",
+      "Confirmed (25 May, 11:00 AM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 9,
+    "user": "Manav Desai",
+    "coach": "Mr. Kunal Sharma",
+    "coachType": "Sports Coach",
+    "dateTime": "27 May, 10:00 AM",
+    "type": "Group",
+    "amount": "₹700",
+    "statusTimeline": [
+      "Booked (25 May, 9:00 AM)",
+      "Auto Approved (25 May, 9:05 AM)",
+      "Confirmed (26 May, 8:00 AM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 10,
+    "user": "Meera Rao",
+    "coach": "Ms. Anita Sharma",
+    "coachType": "Yoga Coach",
+    "dateTime": "28 May, 9:00 AM",
+    "type": "1:1",
+    "amount": "₹600",
+    "statusTimeline": [
+      "Booked (26 May, 1:00 PM)",
+      "Auto Approved (26 May, 1:05 PM)",
+      "Confirmed (27 May, 2:00 PM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 11,
+    "user": "Ayaan Ali",
+    "coach": "Dr. Rakesh Mehra",
+    "coachType": "Therapist",
+    "dateTime": "29 May, 2:00 PM",
+    "type": "1:1",
+    "amount": "₹1,800",
+    "statusTimeline": [
+      "Booked (27 May, 11:00 AM)",
+      "Auto Approved (27 May, 11:05 AM)",
+      "Confirmed (28 May, 10:00 AM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 12,
+    "user": "Riya Khanna",
+    "coach": "Mr. Aditya Verma",
+    "coachType": "Fitness Trainer",
+    "dateTime": "30 May, 12:00 PM",
+    "type": "Group",
+    "amount": "₹750",
+    "statusTimeline": [
+      "Booked (28 May, 2:00 PM)",
+      "Auto Approved (28 May, 2:05 PM)",
+      "Confirmed (29 May, 9:00 AM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 13,
+    "user": "Vihaan Reddy",
+    "coach": "Ms. Deepika Joshi",
+    "coachType": "Dance Coach",
+    "dateTime": "31 May, 5:00 PM",
+    "type": "1:1",
+    "amount": "₹1,200",
+    "statusTimeline": [
+      "Booked (29 May, 3:00 PM)",
+      "Auto Approved (29 May, 3:05 PM)",
+      "Confirmed (30 May, 4:00 PM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 14,
+    "user": "Tara Malhotra",
+    "coach": "Dr. Manoj Sharma",
+    "coachType": "Counselor",
+    "dateTime": "1 June, 11:00 AM",
+    "type": "1:1",
+    "amount": "₹1,000",
+    "statusTimeline": [
+      "Booked (30 May, 10:00 AM)",
+      "Auto Approved (30 May, 10:05 AM)",
+      "Confirmed (31 May, 12:00 PM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  },
+  {
+    "id": 15,
+    "user": "Arnav Kapoor",
+    "coach": "Mr. Vikram Singh",
+    "coachType": "Music Coach",
+    "dateTime": "2 June, 3:00 PM",
+    "type": "1:1",
+    "amount": "₹900",
+    "statusTimeline": [
+      "Booked (31 May, 1:00 PM)",
+      "Auto Approved (31 May, 1:05 PM)",
+      "Confirmed (1 June, 10:00 AM)"
+    ],
+    "actions": ["View", "Reschedule", "Cancel"]
+  }
+];
