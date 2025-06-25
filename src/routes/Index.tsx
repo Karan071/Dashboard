@@ -19,7 +19,6 @@ import FinanceCommissions from "@/pages/Finance/FinanceCommission";
 import Assessments from "@/pages/Products/Assessments";
 import Sessions from "@/pages/Products/Sessions";
 import SessionPool from "@/pages/Products/SessionPool";
-import Reports from "@/pages/UserReports/Review";
 import Feedbacks from "@/pages/UserReports/Feedback";
 import Abuse from "@/pages/UserReports/Abuse";
 import Bug from "@/pages/UserReports/Bug";
