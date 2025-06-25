@@ -3323,3 +3323,170 @@ export const UpcomingSessionsTable = [
   }
 ];
 
+export const PoolTableData = [
+  {
+    "id": 1,
+    "coach": "Anjali Gupta",
+    "coachType": "Mentor",
+    "segment": "UG",
+    "topic": "Exam Stress Tips",
+    "priceCode": "₹500 / INST500",
+    "slots": 3,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 2,
+    "coach": "Rohit Sinha",
+    "coachType": "Educator",
+    "segment": "Career Changer",
+    "topic": "Resume Walkthrough",
+    "priceCode": "₹300 / RSM300",
+    "slots": 5,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 3,
+    "coach": "Meena Iyer",
+    "coachType": "Coach",
+    "segment": "PG",
+    "topic": "Interview Preparation",
+    "priceCode": "₹600 / INT600",
+    "slots": 4,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 4,
+    "coach": "Nikhil Verma",
+    "coachType": "Mentor",
+    "segment": "Professional",
+    "topic": "Work-Life Balance",
+    "priceCode": "₹700 / WLB700",
+    "slots": 2,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 5,
+    "coach": "Sneha Reddy",
+    "coachType": "Educator",
+    "segment": "UG",
+    "topic": "Time Management",
+    "priceCode": "₹400 / TM400",
+    "slots": 6,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 6,
+    "coach": "Amit Joshi",
+    "coachType": "Trainer",
+    "segment": "Career Changer",
+    "topic": "LinkedIn Profile Review",
+    "priceCode": "₹350 / LNK350",
+    "slots": 3,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 7,
+    "coach": "Divya Malhotra",
+    "coachType": "Advisor",
+    "segment": "UG",
+    "topic": "Study Abroad Guide",
+    "priceCode": "₹800 / SBG800",
+    "slots": 2,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 8,
+    "coach": "Rahul Khanna",
+    "coachType": "Mentor",
+    "segment": "PG",
+    "topic": "Choosing the Right Specialization",
+    "priceCode": "₹650 / CRS650",
+    "slots": 5,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 9,
+    "coach": "Neha Kapoor",
+    "coachType": "Educator",
+    "segment": "Career Changer",
+    "topic": "Switching Careers Smoothly",
+    "priceCode": "₹550 / SCS550",
+    "slots": 4,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 10,
+    "coach": "Siddharth Rao",
+    "coachType": "Trainer",
+    "segment": "Professional",
+    "topic": "Corporate Communication",
+    "priceCode": "₹500 / CC500",
+    "slots": 3,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 11,
+    "coach": "Preeti Sharma",
+    "coachType": "Mentor",
+    "segment": "UG",
+    "topic": "Exam Strategy Planning",
+    "priceCode": "₹450 / ESP450",
+    "slots": 4,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 12,
+    "coach": "Karan Mehta",
+    "coachType": "Advisor",
+    "segment": "PG",
+    "topic": "Master's Application Tips",
+    "priceCode": "₹600 / MAT600",
+    "slots": 2,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 13,
+    "coach": "Tanya Desai",
+    "coachType": "Coach",
+    "segment": "Career Changer",
+    "topic": "Cover Letter Masterclass",
+    "priceCode": "₹300 / CLM300",
+    "slots": 5,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 14,
+    "coach": "Varun Singh",
+    "coachType": "Educator",
+    "segment": "Professional",
+    "topic": "Effective Email Writing",
+    "priceCode": "₹350 / EEW350",
+    "slots": 3,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  },
+  {
+    "id": 15,
+    "coach": "Ritika Ahuja",
+    "coachType": "Mentor",
+    "segment": "UG",
+    "topic": "Staying Motivated During Exams",
+    "priceCode": "₹400 / SME400",
+    "slots": 4,
+    "status": "Active",
+    "actions": ["Assign", "Edit", "Remove"]
+  }
+];

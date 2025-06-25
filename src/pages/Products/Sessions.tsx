@@ -40,6 +40,7 @@ import {
     X,
     ChevronLeft,
     ChevronRight,
+    Filter
 } from "lucide-react";
 import { UpcomingSessionsTable } from "@/Data";
 import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
@@ -105,6 +106,7 @@ const stats = [
 ];
 
 export default function Sessions() {
+    const [filtersOpen, setFiltersOpen] = useState(false);
     return (
         <div className="p-6">
             <h1 className="font-semibold px-2 text-2xl">Sessions – Admin Desk</h1>
@@ -117,7 +119,17 @@ export default function Sessions() {
                 <Button>Live Sessions</Button>
                 <Button>Access Recording</Button>
             </div>
-            <SessionFilter />
+            {filtersOpen && <SessionFilter />}
+                <div className="flex justify-end mt-4">
+                    <Button
+                        variant="outline"
+                        onClick={() => setFiltersOpen(!filtersOpen)}
+                        className="flex items-center gap-2"
+                    >
+                        <Filter className="h-4 w-4" />
+                        {filtersOpen ? "Hide Filters" : "Show Filters"}
+                    </Button>
+                </div>
             {/* Tabs with tables */}
             <SessionTables />
         </div>

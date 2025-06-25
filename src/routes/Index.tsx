@@ -19,6 +19,13 @@ import FinanceCommissions from "@/pages/Finance/FinanceCommission";
 import Assessments from "@/pages/Products/Assessments";
 import Sessions from "@/pages/Products/Sessions";
 import SessionPool from "@/pages/Products/SessionPool";
+import Reports from "@/pages/UserReports/Review";
+import Feedbacks from "@/pages/UserReports/Feedback";
+import Abuse from "@/pages/UserReports/Abuse";
+import Bug from "@/pages/UserReports/Bug";
+import Reviews from "@/pages/UserReports/Review";
+import Problems from "@/pages/UserReports/Problem";
+
 
 
 export default function AppRoutes() {
@@ -53,6 +60,13 @@ export default function AppRoutes() {
             <Route path="/assessments" element={<Assessments />} />
             <Route path="/sessions" element={<Sessions />} />
             <Route path="/sessions-pool" element={<SessionPool />} />
+
+            {/* Users */}
+            <Route path="/abuses" element={<Abuse />} />
+            <Route path="/bugs" element={<Bug />} />
+            <Route path="/feedbacks" element={<Feedbacks />} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/problems" element={<Problems />} />
 
 
             <Route path="*" element={<NotFound />} />
