@@ -1,4 +1,4 @@
-import { Users, Building2, UserPlus, Link, CalendarDays, MessageSquare, ChevronLeft, ChevronRight, Bell, Download, X, Search } from "lucide-react"
+import { Users, Building2, UserPlus, Venus, CalendarDays, MessageSquare, ChevronLeft, ChevronRight, Bell, Download, X, Search, Mars } from "lucide-react"
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -14,6 +14,13 @@ import { Separator } from "@/components/ui/separator";
 
 const coachStats = [
     {
+        title: "This Week",
+        value: "27",
+        icon: UserPlus,
+        color: "text-purple-500",
+        bgColor: "bg-purple-100",
+    },
+    {
         title: "Total Coaches",
         value: "1234",
         icon: Users,
@@ -21,40 +28,34 @@ const coachStats = [
         bgColor: "bg-blue-100",
     },
     {
-        title: "Pending Approvals",
+        title: "Approvals",
         value: "34",
         icon: Building2,
         color: "text-green-500",
         bgColor: "bg-green-100",
     },
+
     {
-        title: "New This Week",
-        value: "27",
-        icon: UserPlus,
-        color: "text-purple-500",
-        bgColor: "bg-purple-100",
-    },
-    {
-        title: "Sessions Conducted",
+        title: "Sessions",
         value: "4860",
         icon: MessageSquare,
         color: "text-yellow-500",
         bgColor: "bg-yellow-100",
     },
     {
-        title: "Masterclasses Hosted",
+        title: "Masterclasses",
         value: "67",
         icon: CalendarDays,
         color: "text-red-500",
         bgColor: "bg-red-100",
     },
     {
-        title: "Coaches Linked with Orgs",
-        value: "182",
-        icon: Link,
-        color: "text-indigo-500",
-        bgColor: "bg-indigo-100",
-    }
+        title: "Questions",
+        value: "67",
+        icon: CalendarDays,
+        color: "text-red-500",
+        bgColor: "bg-red-100",
+    },
 ]
 
 
@@ -65,13 +66,6 @@ export default function Coach() {
         <div className="p-6">
             <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-center">
                 <h1 className="text-2xl font-bold">Coaches Dashboard</h1>
-                <div className="flex gap-2">
-                    <Button variant="outline" className="flex items-center gap-2">
-                        <Download className="h-4 w-4" />
-                        Export
-                    </Button>
-                    <Button>Bulk Actions</Button>
-                </div>
             </div>
             {/* Coach card data */}
             <CoachState />
@@ -104,7 +98,7 @@ export default function Coach() {
 function CoachState() {
     return (
         <div className="mt-3">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5 px-2 py-1">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6 px-2 py-1">
                 {coachStats.map((stat, index) => (
                     <Card key={index}>
                         <CardHeader className="flex items-center justify-start">
@@ -133,8 +127,8 @@ function CoachFilter() {
                 <CardContent>
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium">Name / Email / Phone</label>
-                            <Input placeholder="Search by name, email or phone" className="mt-2" />
+                            <label htmlFor=""></label>
+
                         </div>
 
                         <div className="space-y-2">
@@ -286,7 +280,7 @@ function CoachFilter() {
 function ExplorerTable() {
     const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [recordsPerPage, setRecordsPerPage] = useState(10); // <-- Add this line
+    const [recordsPerPage, setRecordsPerPage] = useState(10);
 
     // Calculate pagination data
     const totalPages = Math.ceil(coachTableData.length / recordsPerPage);
@@ -328,22 +322,29 @@ function ExplorerTable() {
                                 {selectedUsers.length} selected
                             </Badge>
                         )}
+                        <div className="flex justify-end items-center gap-4">
+                            {selectedUsers.length > 0 && (
+                                <div className="flex gap-2">
+                                    <Button variant="outline" size="sm">
+                                        <Bell className="mr-2 h-4 w-4" />
+                                        Send Notification
+                                    </Button>
+                                    <Button variant="outline" size="sm">
+                                        <Download className="mr-2 h-4 w-4" />
+                                        Export Selected
+                                    </Button>
+                                    <Button variant="destructive" size="sm">
+                                        <X className="mr-2 h-4 w-4" />
+                                        Mark Inactive
+                                    </Button>
+                                </div>
+                            )}
+                        </div>
                     </div>
-                    <div className="flex items-center border rounded-md overflow-hidden bg-white shadow-sm">
-                        <Input
-                            placeholder="Search"
-                            className="border-none focus:ring-0 focus-visible:ring-0 focus:outline-none px-3 py-2 w-40 sm:w-56"
-                        />
-                        <Button
-                            type="submit"
-                            size="icon"
-                            variant="ghost"
-                            className="rounded-none rounded-r-md bg-gray-200"
-                            aria-label="Search"
-                        >
-                            <Search className="h-5 w-5 text-gray-500" />
-                        </Button>
-                    </div>
+
+
+                </div>
+                <div className="flex justify-end items-center gap-2">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="sm" className="flex items-center gap-2 text-sm">
@@ -365,27 +366,21 @@ function ExplorerTable() {
                             ))}
                         </DropdownMenuContent>
                     </DropdownMenu>
-
-
-                </div>
-                <div className="flex justify-end items-center gap-4">
-                    {selectedUsers.length > 0 && (
-                        <div className="flex gap-2">
-                            <Button variant="outline" size="sm">
-                                <Bell className="mr-2 h-4 w-4" />
-                                Send Notification
-                            </Button>
-                            <Button variant="outline" size="sm">
-                                <Download className="mr-2 h-4 w-4" />
-                                Export Selected
-                            </Button>
-                            <Button variant="destructive" size="sm">
-                                <X className="mr-2 h-4 w-4" />
-                                Mark Inactive
-                            </Button>
-                        </div>
-                    )}
-
+                    <div className="flex justify-around items-center border rounded-md overflow-hidden bg-white shadow-sm">
+                        <Input
+                            placeholder="Search"
+                            className="border-none focus:ring-0 focus-visible:ring-0 focus:outline-none px-3 py-2 w-40 sm:w-56"
+                        />
+                        <Button
+                            type="submit"
+                            size="icon"
+                            variant="ghost"
+                            className="rounded-none rounded-r-md bg-gray-200"
+                            aria-label="Search"
+                        >
+                            <Search className="h-5 w-5 text-gray-500" />
+                        </Button>
+                    </div>
                 </div>
             </div>
 
@@ -400,7 +395,7 @@ function ExplorerTable() {
                             <TableHead>Sessions</TableHead>
                             <TableHead>Assessments</TableHead>
                             <TableHead>Org Linked</TableHead>
-                            <TableHead>DOJ / Last Active Date</TableHead>
+                            <TableHead>Last Active / DOJ</TableHead>
 
                         </TableRow>
                     </TableHeader>
@@ -415,18 +410,39 @@ function ExplorerTable() {
                                 </TableCell>
                                 <TableCell>
                                     <div className="flex items-center gap-3">
-                                        <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
+                                        <div className="h-16 w-16 rounded-full bg-gray-200 overflow-hidden">
                                             <img
-                                                src={user.profile.photo || "/placeholder.svg"}
+                                                src={user.profile.photo}
                                                 alt={user.profile.name}
                                                 className="h-full w-full object-cover"
                                             />
                                         </div>
                                         <div>
-                                            <div className="font-medium">{user.profile.name}</div>
-                                            <div className="text-gray-500 text-xs">{user.specialty}</div>
+                                            <div className="flex justify-start items-center">
+                                                <div className="font-medium">{user.profile.name}</div>
+                                                <div className="flex items-center gap-1 ">
+                                                    {user.profile.gender === "M" ? <Mars className="h-4" /> : <Venus className="h-4" />}
+                                                </div>
+
+                                            </div>
+                                            <div className="flex justify-start items-center gap-2">
+                                                <div className="text-gray-500 text-xs">
+                                                    {user.specialty}
+                                                </div>
+                                            </div>
                                             <div>
-                                                <div className="flex justify-start gap-2">
+                                                <div className="flex justify-start items-center gap-2">
+                                                    <div className="text-xs text-gray-900 italic">
+                                                        {`@${user.profile.userid}`}
+                                                    </div>
+                                                    <div>
+                                                        <Badge variant="outline" className="text-xs font-light">
+                                                            {user.profile.type}
+                                                        </Badge>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex justify-start gap-2 mt-1">
                                                     <Button
                                                         variant="text"
                                                         size="xs"
@@ -470,8 +486,8 @@ function ExplorerTable() {
                                 </TableCell>
                                 <TableCell>{user.orgLinked}</TableCell>
                                 <TableCell>
-                                    <div className="text-sm">{user.joined}</div>
-                                    <div className="text-xs text-gray-500">{user.lastActive}</div>
+                                    <div className="text-sm">{user.lastActive}</div>
+                                    <div className="text-xs text-gray-500">{user.joined}</div>
                                 </TableCell>
                             </TableRow>
                         ))}

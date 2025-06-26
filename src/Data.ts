@@ -2,6 +2,7 @@ import picture1 from "@/assets/icon1.png"
 import picture2 from "@/assets/icon2.png"
 import picture3 from "@/assets/icons3.png"
 import picture4 from "@/assets/icons4.jpeg"
+import { use } from "react"
 
 export const mockUsers = [
   {
@@ -2049,12 +2050,17 @@ export const PendingApprovalTableData = [
   }
 ]
 
+const coachTypes = ["Coach", "Mentor", "Educator"];
+
 export const coachTableData = [
   {
     id: 1,
     profile: {
       name: "Anjali Verma",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "F",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "anjali123"
     },
     specialty: "Psychology, UG Careers",
     contact: {
@@ -2076,7 +2082,10 @@ export const coachTableData = [
     id: 2,
     profile: {
       name: "Rahul Singh",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "M",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "rahultech"
     },
     specialty: "Engineering, Aptitude",
     contact: {
@@ -2098,7 +2107,10 @@ export const coachTableData = [
     id: 3,
     profile: {
       name: "Sneha Sharma",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "F",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "snehahealth"
     },
     specialty: "Medical Prep",
     contact: {
@@ -2120,7 +2132,10 @@ export const coachTableData = [
     id: 4,
     profile: {
       name: "Vikram Mehta",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "M",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "vikramcareer"
     },
     specialty: "Career Counselling",
     contact: {
@@ -2142,7 +2157,10 @@ export const coachTableData = [
     id: 5,
     profile: {
       name: "Neha Joshi",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "F",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "nehaadmissions"
     },
     specialty: "UG Admissions",
     contact: {
@@ -2164,7 +2182,10 @@ export const coachTableData = [
     id: 6,
     profile: {
       name: "Amit Thakur",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "M",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "amitmba"
     },
     specialty: "MBA Prep",
     contact: {
@@ -2186,7 +2207,10 @@ export const coachTableData = [
     id: 7,
     profile: {
       name: "Pooja Iyer",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "F",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "pooja_softskills"
     },
     specialty: "Soft Skills, Resume Review",
     contact: {
@@ -2208,7 +2232,10 @@ export const coachTableData = [
     id: 8,
     profile: {
       name: "Kunal Rao",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "M",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "kunal_sat"
     },
     specialty: "SAT Prep",
     contact: {
@@ -2230,7 +2257,10 @@ export const coachTableData = [
     id: 9,
     profile: {
       name: "Divya Kapoor",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "F",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "divya_career"
     },
     specialty: "Career Discovery",
     contact: {
@@ -2252,7 +2282,10 @@ export const coachTableData = [
     id: 10,
     profile: {
       name: "Arjun Patel",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "M",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "arjun_design"
     },
     specialty: "Design Colleges",
     contact: {
@@ -2274,7 +2307,10 @@ export const coachTableData = [
     id: 11,
     profile: {
       name: "Ritika Shah",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "F",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "ritika_gre"
     },
     specialty: "GRE / TOEFL",
     contact: {
@@ -2296,7 +2332,10 @@ export const coachTableData = [
     id: 12,
     profile: {
       name: "Manish Kaul",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "M",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "manish_leadership"
     },
     specialty: "Leadership, Communication",
     contact: {
@@ -2318,7 +2357,10 @@ export const coachTableData = [
     id: 13,
     profile: {
       name: "Ishita Nair",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "F",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "ishita_arts"
     },
     specialty: "Liberal Arts",
     contact: {
@@ -2340,7 +2382,10 @@ export const coachTableData = [
     id: 14,
     profile: {
       name: "Nikhil Sharma",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "M",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "nikhil_bootcamp"
     },
     specialty: "Coding Bootcamps",
     contact: {
@@ -2362,7 +2407,10 @@ export const coachTableData = [
     id: 15,
     profile: {
       name: "Tanya Jain",
-      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)]
+      photo: [picture1, picture2, picture3, picture4][Math.floor(Math.random() * 4)],
+      gender: "F",
+      type: coachTypes[Math.floor(Math.random() * 3)],
+      userid: "tanya_finance"
     },
     specialty: "Finance & Commerce",
     contact: {
