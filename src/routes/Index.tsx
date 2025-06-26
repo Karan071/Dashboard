@@ -25,8 +25,6 @@ import Bug from "@/pages/UserReports/Bug";
 import Reviews from "@/pages/UserReports/Review";
 import Problems from "@/pages/UserReports/Problem";
 
-
-
 export default function AppRoutes() {
     return (
         <Routes>

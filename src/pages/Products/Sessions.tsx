@@ -325,7 +325,6 @@ function SessionFilter() {
 
 function SessionTables() {
     const [activeTab, setActiveTab] = useState("upcoming-sessions");
-
     const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const recordsPerPage = 5;

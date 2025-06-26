@@ -3490,3 +3490,156 @@ export const PoolTableData = [
     "actions": ["Assign", "Edit", "Remove"]
   }
 ];
+
+export const AbuseTableData = [
+  {
+    "id": 1,
+    "reportedBy": "Aarav Mehta",
+    "submittedOn": "17 May 2025",
+    "reportedIn": "Chat",
+    "reportedContent": "Offensive language during session chat",
+    "reason": "Harassment",
+    "status": "Under Review",
+    "actions": ["Review", "Escalate"]
+  },
+  {
+    "id": 2,
+    "reportedBy": "Neha Kapoor",
+    "submittedOn": "16 May 2025",
+    "reportedIn": "Feedback",
+    "reportedContent": "Fake testimonial with misleading claim",
+    "reason": "Misinformation",
+    "status": "Actioned",
+    "actions": ["Details", "Archive"]
+  },
+  {
+    "id": 3,
+    "reportedBy": "Rahul Bhagat",
+    "submittedOn": "15 May 2025",
+    "reportedIn": "Public Post",
+    "reportedContent": "Spam link in shared resources section",
+    "reason": "Spam",
+    "status": "Resolved",
+    "actions": ["View", "Archive"]
+  },
+  {
+    "id": 4,
+    "reportedBy": "Sanya Rathi",
+    "submittedOn": "14 May 2025",
+    "reportedIn": "Session",
+    "reportedContent": "Rude behavior by a participant",
+    "reason": "Inappropriate Content",
+    "status": "Archived",
+    "actions": ["Restore"]
+  },
+  {
+    "id": 5,
+    "reportedBy": "Ishaan Gupta",
+    "submittedOn": "13 May 2025",
+    "reportedIn": "Chat",
+    "reportedContent": "Threatening message sent during chat",
+    "reason": "Abuse",
+    "status": "Under Review",
+    "actions": ["Review", "Escalate"]
+  },
+  {
+    "id": 6,
+    "reportedBy": "Ananya Singh",
+    "submittedOn": "12 May 2025",
+    "reportedIn": "Feedback",
+    "reportedContent": "Copied review from another user",
+    "reason": "Plagiarism",
+    "status": "Actioned",
+    "actions": ["Details", "Archive"]
+  },
+  {
+    "id": 7,
+    "reportedBy": "Rohit Sinha",
+    "submittedOn": "11 May 2025",
+    "reportedIn": "Session",
+    "reportedContent": "Disruptive behavior during video call",
+    "reason": "Disruption",
+    "status": "Resolved",
+    "actions": ["View", "Archive"]
+  },
+  {
+    "id": 8,
+    "reportedBy": "Kavya Nair",
+    "submittedOn": "10 May 2025",
+    "reportedIn": "Public Post",
+    "reportedContent": "Post contains offensive meme",
+    "reason": "Inappropriate Content",
+    "status": "Archived",
+    "actions": ["Restore"]
+  },
+  {
+    "id": 9,
+    "reportedBy": "Manav Desai",
+    "submittedOn": "9 May 2025",
+    "reportedIn": "Feedback",
+    "reportedContent": "False claim about mentor's credentials",
+    "reason": "Misinformation",
+    "status": "Actioned",
+    "actions": ["Details", "Archive"]
+  },
+  {
+    "id": 10,
+    "reportedBy": "Simran Chopra",
+    "submittedOn": "8 May 2025",
+    "reportedIn": "Chat",
+    "reportedContent": "User shared personal contact details",
+    "reason": "Policy Violation",
+    "status": "Resolved",
+    "actions": ["View", "Archive"]
+  },
+  {
+    "id": 11,
+    "reportedBy": "Yash Jain",
+    "submittedOn": "7 May 2025",
+    "reportedIn": "Session",
+    "reportedContent": "Participant was shouting and abusive",
+    "reason": "Harassment",
+    "status": "Under Review",
+    "actions": ["Review", "Escalate"]
+  },
+  {
+    "id": 12,
+    "reportedBy": "Tara Mehta",
+    "submittedOn": "6 May 2025",
+    "reportedIn": "Feedback",
+    "reportedContent": "Review used hate speech",
+    "reason": "Offensive Content",
+    "status": "Actioned",
+    "actions": ["Details", "Archive"]
+  },
+  {
+    "id": 13,
+    "reportedBy": "Arjun Kapoor",
+    "submittedOn": "5 May 2025",
+    "reportedIn": "Public Post",
+    "reportedContent": "Malicious code shared in post",
+    "reason": "Security Threat",
+    "status": "Resolved",
+    "actions": ["View", "Archive"]
+  },
+  {
+    "id": 14,
+    "reportedBy": "Ritika Ahuja",
+    "submittedOn": "4 May 2025",
+    "reportedIn": "Session",
+    "reportedContent": "Session contained unapproved content",
+    "reason": "Content Violation",
+    "status": "Archived",
+    "actions": ["Restore"]
+  },
+  {
+    "id": 15,
+    "reportedBy": "Dev Mehta",
+    "submittedOn": "3 May 2025",
+    "reportedIn": "Chat",
+    "reportedContent": "User sent unsolicited ads",
+    "reason": "Spam",
+    "status": "Under Review",
+    "actions": ["Review", "Escalate"]
+  }
+];
