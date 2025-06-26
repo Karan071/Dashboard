@@ -112,8 +112,8 @@ function CoachState() {
                                 <stat.icon className={`h-8 w-8 ${stat.color}`} />
                             </div>
                             <div className="flex flex-col ml-2 ">
-                                <div className="text-xl font-bold">{stat.value}</div>
                                 <div className="text-sm font-medium">{stat.title}</div>
+                                <div className="text-xl font-bold">{stat.value}</div>
                             </div>
                         </CardHeader>
                     </Card>
@@ -313,7 +313,37 @@ function ExplorerTable() {
     return (
         <div className="rounded-md border bg-white p-5">
             <div className="flex items-center justify-between border-b p-4">
-                <div className="flex items-center gap-2">
+                <div className="flex justify-end items-center gap-4">
+                    <div className="flex items-center gap-2">
+                        <Checkbox
+                            id="select-all"
+                            checked={selectedUsers.length === currentRecords.length && currentRecords.length > 0}
+                            onCheckedChange={toggleSelectAll}
+                        />
+                        <label htmlFor="select-all" className="text-sm font-medium">
+                            Select All
+                        </label>
+                        {selectedUsers.length > 0 && (
+                            <Badge variant="outline" className="ml-2">
+                                {selectedUsers.length} selected
+                            </Badge>
+                        )}
+                    </div>
+                    <div className="flex items-center border rounded-md overflow-hidden bg-white shadow-sm">
+                        <Input
+                            placeholder="Search"
+                            className="border-none focus:ring-0 focus-visible:ring-0 focus:outline-none px-3 py-2 w-40 sm:w-56"
+                        />
+                        <Button
+                            type="submit"
+                            size="icon"
+                            variant="ghost"
+                            className="rounded-none rounded-r-md bg-gray-200"
+                            aria-label="Search"
+                        >
+                            <Search className="h-5 w-5 text-gray-500" />
+                        </Button>
+                    </div>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="sm" className="flex items-center gap-2 text-sm">
@@ -335,21 +365,9 @@ function ExplorerTable() {
                             ))}
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    <Checkbox
-                        id="select-all"
-                        checked={selectedUsers.length === currentRecords.length && currentRecords.length > 0}
-                        onCheckedChange={toggleSelectAll}
-                    />
-                    <label htmlFor="select-all" className="text-sm font-medium">
-                        Select All
-                    </label>
-                    {selectedUsers.length > 0 && (
-                        <Badge variant="outline" className="ml-2">
-                            {selectedUsers.length} selected
-                        </Badge>
-                    )}
-                </div>
 
+
+                </div>
                 <div className="flex justify-end items-center gap-4">
                     {selectedUsers.length > 0 && (
                         <div className="flex gap-2">
@@ -367,21 +385,7 @@ function ExplorerTable() {
                             </Button>
                         </div>
                     )}
-                    <div className="flex items-center border rounded-md overflow-hidden bg-white shadow-sm">
-                        <Input
-                            placeholder="Search"
-                            className="border-none focus:ring-0 focus-visible:ring-0 focus:outline-none px-3 py-2 w-40 sm:w-56"
-                        />
-                        <Button
-                            type="submit"
-                            size="icon"
-                            variant="ghost"
-                            className="rounded-none rounded-r-md bg-gray-200"
-                            aria-label="Search"
-                        >
-                            <Search className="h-5 w-5 text-gray-500" />
-                        </Button>
-                    </div>
+
                 </div>
             </div>
 
