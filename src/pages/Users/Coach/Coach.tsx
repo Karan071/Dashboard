@@ -81,33 +81,31 @@ export default function Coach() {
                     </Button>
                 </div>
                 {filtersOpen && (
-                    <div className="absolute right-0 top-16 z-50 w-full max-w-3xl">
+                    <div className="absolute right-0 top-16 z-50 w-full max-w-xl">
                         <CoachFilter />
                     </div>
                 )}
             </div>
-
             <div>
                 <ExplorerTable />
             </div>
-
         </div>
     )
 }
 
 function CoachState() {
     return (
-        <div className="mt-3">
+        <div className="mt-2">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6 px-2 py-1">
                 {coachStats.map((stat, index) => (
                     <Card key={index}>
                         <CardHeader className="flex items-center justify-start">
-                            <div className={`${stat.bgColor} rounded-full p-2`}>
+                            <div className={`${stat.bgColor} rounded-full p-0`}>
                                 <stat.icon className={`h-8 w-8 ${stat.color}`} />
                             </div>
-                            <div className="flex flex-col ml-2 ">
-                                <div className="text-sm font-medium">{stat.title}</div>
-                                <div className="text-xl font-bold">{stat.value}</div>
+                            <div className="flex flex-col ml-2">
+                                <div className="text-xs font-medium">{stat.title}</div>
+                                <div className="text-sm font-bold">{stat.value}</div>
                             </div>
                         </CardHeader>
                     </Card>
@@ -127,10 +125,28 @@ function CoachFilter() {
                 <CardContent>
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         <div className="space-y-2">
-                            <label htmlFor=""></label>
-
+                            <label className="text-sm font-medium">Coach Type</label>
+                            <div className="flex flex-wrap gap-4 mt-2">
+                                <div className="flex items-center space-x-2">
+                                    <Checkbox id="educator" />
+                                    <label htmlFor="educator" className="text-sm">
+                                        Educator
+                                    </label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <Checkbox id="mentor" />
+                                    <label htmlFor="mentor" className="text-sm">
+                                        Mentor
+                                    </label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <Checkbox id="coach" />
+                                    <label htmlFor="coach" className="text-sm">
+                                        Coach
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-
                         <div className="space-y-2">
                             <label className="text-sm font-medium">Status</label>
                             <div className="flex flex-wrap gap-4 mt-2">
@@ -341,8 +357,6 @@ function ExplorerTable() {
                             )}
                         </div>
                     </div>
-
-
                 </div>
                 <div className="flex justify-end items-center gap-2">
                     <DropdownMenu>
@@ -369,7 +383,7 @@ function ExplorerTable() {
                     <div className="flex justify-around items-center border rounded-md overflow-hidden bg-white shadow-sm">
                         <Input
                             placeholder="Search"
-                            className="border-none focus:ring-0 focus-visible:ring-0 focus:outline-none px-3 py-2 w-40 sm:w-56"
+                            className="border-none focus:ring-0 focus-visible:ring-0 focus:outline-none px-3 py-2 w-40 sm:w-30"
                         />
                         <Button
                             type="submit"
