@@ -2,7 +2,6 @@ import picture1 from "@/assets/icon1.png"
 import picture2 from "@/assets/icon2.png"
 import picture3 from "@/assets/icons3.png"
 import picture4 from "@/assets/icons4.jpeg"
-import { use } from "react"
 
 export const mockUsers = [
   {
