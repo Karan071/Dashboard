@@ -39,18 +39,17 @@ const stats = [
 ]
 
 export default function StatsCards() {
-
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5 px-2 py-1">
       {stats.map((stat, index) => (
         <Card key={index}>
           <CardHeader className="flex items-center justify-start">
             <div className={`${stat.bgColor} rounded-full p-2`}>
-              <stat.icon className={`h-10 w-10 ${stat.color}`} />
+              <stat.icon className={`h-8 w-8 ${stat.color}`} />
             </div>
-            <div className="flex flex-col  ml-2 ">
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <div className="text-md font-medium">{stat.title}</div>
+            <div className="flex flex-col ml-2">
+              <div className="text-xl font-bold">{stat.value}</div>
+              <div className="text-sm font-medium">{stat.title}</div>
             </div>
           </CardHeader>
         </Card>

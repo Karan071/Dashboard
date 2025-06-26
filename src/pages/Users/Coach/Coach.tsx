@@ -1,4 +1,4 @@
-import { Users, Building2, UserPlus, Link, CalendarDays, Eye, MessageSquare, Flag, ChevronLeft, ChevronRight, Bell, Download, X } from "lucide-react"
+import { Users, Building2, UserPlus, Link, CalendarDays, Eye, MessageSquare, Flag, ChevronLeft, ChevronRight, Bell, Download, X, Search } from "lucide-react"
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -73,24 +73,7 @@ export default function Coach() {
                 </div>
             </div>
             {/* Coach card data */}
-            <div>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2 py-1">
-                    {coachStats.map((stat, index) => (
-                        <Card key={index}>
-                            <CardHeader className="flex items-center justify-start">
-                                <div className={`${stat.bgColor} rounded-full p-2`}>
-                                    <stat.icon className={`h-10 w-10 ${stat.color}`} />
-                                </div>
-                                <div className="flex flex-col  ml-2 ">
-                                    <div className="text-2xl font-bold">{stat.value}</div>
-                                    <div className="text-md font-medium">{stat.title}</div>
-                                </div>
-                            </CardHeader>
-                        </Card>
-                    ))}
-                </div>
-            </div>
-
+            <CoachState />
             <div>
                 {filtersOpen && <CoachFilter />}
                 <div className="flex justify-end mt-4 p-4">
@@ -113,10 +96,32 @@ export default function Coach() {
     )
 }
 
+function CoachState() {
+    return (
+        <div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5 px-2 py-1">
+                {coachStats.map((stat, index) => (
+                    <Card key={index}>
+                        <CardHeader className="flex items-center justify-start">
+                            <div className={`${stat.bgColor} rounded-full p-2`}>
+                                <stat.icon className={`h-8 w-8 ${stat.color}`} />
+                            </div>
+                            <div className="flex flex-col ml-2 ">
+                                <div className="text-xl font-bold">{stat.value}</div>
+                                <div className="text-sm font-medium">{stat.title}</div>
+                            </div>
+                        </CardHeader>
+                    </Card>
+                ))}
+            </div>
+        </div>
+    )
+}
+
 function CoachFilter() {
     return (
-        <div className="p-4">
-            <Card className="mt-8">
+        <div className="">
+            <Card className="mt-2">
                 <CardHeader>
                     <CardTitle className="text-lg">Filters</CardTitle>
                 </CardHeader>
@@ -276,14 +281,13 @@ function CoachFilter() {
 function ExplorerTable() {
     const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    // const navigate = useNavigate();
-    const recordsPerPage = 5
+    const [recordsPerPage, setRecordsPerPage] = useState(10); // <-- Add this line
 
     // Calculate pagination data
-    const totalPages = Math.ceil(coachTableData.length / recordsPerPage)
-    const indexOfLastRecord = currentPage * recordsPerPage
-    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
-    const currentRecords = coachTableData.slice(indexOfFirstRecord, indexOfLastRecord)
+    const totalPages = Math.ceil(coachTableData.length / recordsPerPage);
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = coachTableData.slice(indexOfFirstRecord, indexOfLastRecord);
 
     const toggleSelectAll = () => {
         if (selectedUsers.length === currentRecords.length) {
@@ -305,6 +309,27 @@ function ExplorerTable() {
         <div className="rounded-md border bg-white p-5">
             <div className="flex items-center justify-between border-b p-4">
                 <div className="flex items-center gap-2">
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline" size="sm" className="flex items-center gap-2 text-sm">
+                                {recordsPerPage}
+                                <ChevronDown className="h-4 w-4" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            {[10, 25, 50, 100].map(size => (
+                                <DropdownMenuItem
+                                    key={size}
+                                    onClick={() => {
+                                        setRecordsPerPage(size);
+                                        setCurrentPage(1);
+                                    }}
+                                >
+                                    {size}
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                     <Checkbox
                         id="select-all"
                         checked={selectedUsers.length === currentRecords.length && currentRecords.length > 0}
@@ -320,22 +345,39 @@ function ExplorerTable() {
                     )}
                 </div>
 
-                {selectedUsers.length > 0 && (
-                    <div className="flex gap-2">
-                        <Button variant="outline" size="sm">
-                            <Bell className="mr-2 h-4 w-4" />
-                            Send Notification
-                        </Button>
-                        <Button variant="outline" size="sm">
-                            <Download className="mr-2 h-4 w-4" />
-                            Export Selected
-                        </Button>
-                        <Button variant="destructive" size="sm">
-                            <X className="mr-2 h-4 w-4" />
-                            Mark Inactive
+                <div className="flex justify-end items-center gap-4">
+                    {selectedUsers.length > 0 && (
+                        <div className="flex gap-2">
+                            <Button variant="outline" size="sm">
+                                <Bell className="mr-2 h-4 w-4" />
+                                Send Notification
+                            </Button>
+                            <Button variant="outline" size="sm">
+                                <Download className="mr-2 h-4 w-4" />
+                                Export Selected
+                            </Button>
+                            <Button variant="destructive" size="sm">
+                                <X className="mr-2 h-4 w-4" />
+                                Mark Inactive
+                            </Button>
+                        </div>
+                    )}
+                    <div className="flex items-center border rounded-md overflow-hidden bg-white shadow-sm">
+                        <Input
+                            placeholder="Search"
+                            className="border-none focus:ring-0 focus-visible:ring-0 focus:outline-none px-3 py-2 w-40 sm:w-56"
+                        />
+                        <Button
+                            type="submit"
+                            size="icon"
+                            variant="ghost"
+                            className="rounded-none rounded-r-md bg-gray-200"
+                            aria-label="Search"
+                        >
+                            <Search className="h-5 w-5 text-gray-500" />
                         </Button>
                     </div>
-                )}
+                </div>
             </div>
 
             <div className="overflow-x-auto">
@@ -344,14 +386,13 @@ function ExplorerTable() {
                         <TableRow>
                             <TableHead className="w-[50px]"></TableHead>
                             <TableHead>Profile</TableHead>
-                            <TableHead>Speciality</TableHead>
                             <TableHead>Contact</TableHead>
                             <TableHead>Status</TableHead>
                             <TableHead>Sessions</TableHead>
                             <TableHead>Assessments</TableHead>
                             <TableHead>Org Linked</TableHead>
                             <TableHead>DOJ / Last Active Date</TableHead>
-                            <TableHead className="text-center">Actions</TableHead>
+
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -374,10 +415,30 @@ function ExplorerTable() {
                                         </div>
                                         <div>
                                             <div className="font-medium">{user.profile.name}</div>
+                                            <div className="text-gray-500 text-xs">{user.specialty}</div>
+                                            <div>
+                                                <div className="flex justify-start gap-2">
+                                                    <Button
+                                                        variant="text"
+                                                        size="xs"
+                                                    // onClick={() => navigate(`/user-details/${user.id}`)}
+                                                    >
+                                                        View
+                                                        <span className="sr-only">View</span>
+                                                    </Button>
+                                                    <Button variant="text" size="xs">
+                                                        Chat
+                                                        <span className="sr-only">Chat</span>
+                                                    </Button>
+                                                    <Button variant="text" size="xs">
+                                                        Flag
+                                                        <span className="sr-only">Flag</span>
+                                                    </Button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </TableCell>
-                                <TableCell>{user.specialty}</TableCell>
                                 <TableCell>
                                     <div className="text-sm">{user.contact.email}</div>
                                     <div className="text-xs text-gray-500">{user.contact.phone}</div>
@@ -400,36 +461,17 @@ function ExplorerTable() {
                                     <div className="text-sm">{user.joined}</div>
                                     <div className="text-xs text-gray-500">{user.lastActive}</div>
                                 </TableCell>
-
-                                <TableCell>
-                                    <div className="flex justify-center gap-2">
-                                        <Button
-                                            variant="ghost"
-                                            size="icon"
-                                        // onClick={() => navigate(`/user-details/${user.id}`)}
-                                        >
-                                            <Eye className="h-4 w-4" />
-                                            <span className="sr-only">View</span>
-                                        </Button>
-                                        <Button variant="ghost" size="icon">
-                                            <MessageSquare className="h-4 w-4" />
-                                            <span className="sr-only">Chat</span>
-                                        </Button>
-                                        <Button variant="ghost" size="icon">
-                                            <Flag className="h-4 w-4" />
-                                            <span className="sr-only">Flag</span>
-                                        </Button>
-                                    </div>
-                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </div>
 
-            <div className="flex items-center justify-between border-t p-4">
-                <div className="text-sm text-gray-500">
-                    Showing {indexOfFirstRecord + 1}-{Math.min(indexOfLastRecord, coachTableData.length)} of {coachTableData.length} explorers
+            <div className="flex items-center justify-between border-t p-4 flex-wrap gap-2">
+                <div className="flex items-center gap-4">
+                    <span className="text-sm text-gray-500">
+                        Showing {indexOfFirstRecord + 1}-{Math.min(indexOfLastRecord, coachTableData.length)} of {coachTableData.length} explorers
+                    </span>
                 </div>
                 <div className="flex items-center gap-2">
                     <Button
