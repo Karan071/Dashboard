@@ -75,9 +75,8 @@ export default function Coach() {
             </div>
             {/* Coach card data */}
             <CoachState />
-            <div>
-                {filtersOpen && <CoachFilter />}
-                <div className="flex justify-end mt-4 p-4">
+            <div className="relative">
+                <div className="flex justify-end p-4">
                     <Button
                         variant="outline"
                         onClick={() => setFiltersOpen(!filtersOpen)}
@@ -87,6 +86,11 @@ export default function Coach() {
                         {filtersOpen ? "Hide Filters" : "Show Filters"}
                     </Button>
                 </div>
+                {filtersOpen && (
+                    <div className="absolute right-0 top-16 z-50 w-full max-w-3xl">
+                        <CoachFilter />
+                    </div>
+                )}
             </div>
 
             <div>
@@ -99,7 +103,7 @@ export default function Coach() {
 
 function CoachState() {
     return (
-        <div>
+        <div className="mt-3">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5 px-2 py-1">
                 {coachStats.map((stat, index) => (
                     <Card key={index}>
