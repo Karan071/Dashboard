@@ -1,4 +1,4 @@
-import { Users, Building2, UserPlus, Link, CalendarDays, Eye, MessageSquare, Flag, ChevronLeft, ChevronRight, Bell, Download, X, Search } from "lucide-react"
+import { Users, Building2, UserPlus, Link, CalendarDays, MessageSquare, ChevronLeft, ChevronRight, Bell, Download, X, Search } from "lucide-react"
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
