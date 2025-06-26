@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { coachTableData } from "@/Data";
+import { Separator } from "@/components/ui/separator";
 
 const coachStats = [
     {
@@ -426,10 +427,12 @@ function ExplorerTable() {
                                                         View
                                                         <span className="sr-only">View</span>
                                                     </Button>
+                                                    <Separator orientation="vertical" thickness="2px" length="100px" />
                                                     <Button variant="text" size="xs">
                                                         Chat
                                                         <span className="sr-only">Chat</span>
                                                     </Button>
+                                                    <Separator orientation="vertical" thickness="2px" length="80px" />
                                                     <Button variant="text" size="xs">
                                                         Flag
                                                         <span className="sr-only">Flag</span>
@@ -448,7 +451,8 @@ function ExplorerTable() {
                                 </TableCell>
                                 <TableCell>
                                     <div className="text-sm">
-                                        {`${user.sessions.total}(${user.sessions.completed} Completed)`}
+                                        <div>{`${user.sessions.total}`}</div>
+                                        <div className="text-xs text-gray-400">{`${user.sessions.completed} Completed`}</div>
                                     </div>
                                 </TableCell>
                                 <TableCell>
