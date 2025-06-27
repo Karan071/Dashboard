@@ -131,8 +131,8 @@ function CoachState() {
                                 <stat.icon className={`h-6 w-6 ${stat.color}`} />
                             </div>
                             <div className="flex flex-col ml-2">
-                                <div className="text-xs font-medium">{stat.title}</div>
-                                <div className="text-sm font-bold">{stat.value}</div>
+                                <div className="text-[14px] font-normal">{stat.title}</div>
+                                <div className="text-[22px] font-semibold">{stat.value}</div>
                             </div>
                         </CardHeader>
                     </Card>
@@ -386,7 +386,7 @@ function ExplorerTable() {
     };
 
     return (
-        <div className="rounded-md border bg-white p-5">
+        <div className="rounded-md border bg-white">
             <div className="flex items-center justify-between border-b p-4">
                 <div className="flex justify-end items-center gap-4">
                     <div className="flex items-center gap-2">
@@ -474,7 +474,7 @@ function ExplorerTable() {
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="w-[50px]"></TableHead>
+                            <TableHead className="w-[40px]"></TableHead>
                             <TableHead
                                 onClick={() => requestSort("profile.name")}
                                 className="cursor-pointer"
@@ -543,8 +543,8 @@ function ExplorerTable() {
                                     />
                                 </TableCell>
                                 <TableCell>
-                                    <div className="flex items-center gap-3">
-                                        <div className="h-16 w-16 rounded-full bg-gray-200 overflow-hidden">
+                                    <div className="flex items-center gap-4">
+                                        <div className="h-18 w-18 rounded-full bg-gray-200 overflow-hidden">
                                             <img
                                                 src={user.profile.photo}
                                                 alt={user.profile.name}
@@ -561,6 +561,14 @@ function ExplorerTable() {
                                                         <Venus className="h-4" />
                                                     )}
                                                 </div>
+                                                <div>
+                                                        <Badge
+                                                            variant="outline"
+                                                            className="text-xs font-light"
+                                                        >
+                                                            {user.profile.type}
+                                                        </Badge>
+                                                    </div>
                                             </div>
                                             <div className="flex justify-start items-center gap-2">
                                                 <div className="text-gray-500 text-xs">
@@ -571,14 +579,6 @@ function ExplorerTable() {
                                                 <div className="flex justify-start items-center gap-2">
                                                     <div className="text-xs text-gray-900 italic">
                                                         {`@${user.profile.userid}`}
-                                                    </div>
-                                                    <div>
-                                                        <Badge
-                                                            variant="outline"
-                                                            className="text-xs font-light"
-                                                        >
-                                                            {user.profile.type}
-                                                        </Badge>
                                                     </div>
                                                 </div>
 
@@ -597,7 +597,7 @@ function ExplorerTable() {
                                                         length="100px"
                                                     />
                                                     <Button variant="text" size="xs">
-                                                        Chat
+                                                        History
                                                         <span className="sr-only">Chat</span>
                                                     </Button>
                                                     <Separator

@@ -25,7 +25,7 @@ function Separator({
       decorative={decorative}
       orientation={orientation}
       className={cn(
-        color ? color : "bg-border bg-black/50",
+        color ? color : "bg-border bg-black/20",
         isHorizontal
           ? [
             thickness ? `h-[${thickness}]` : "h-[2px]",
