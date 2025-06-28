@@ -4,7 +4,8 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/component
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Aimshala from "@/assets/logoAimshal.png"
+import logo from "@/assets/logo.png"
+
 
 const SidebarItems = [
     {
@@ -118,8 +119,8 @@ export default function UISidebar() {
             <Sidebar >
                 <SidebarHeader className="flex space-y-10 items-center px-7 ">
                     <div className="text-lg font-semibold flex flex-col items-center gap-4 p-1">
-                        <img src={Aimshala} alt="logo" className="h-10 w-full object-cover" />
-                        <div className="font-bold text-xl text-[#231f20ad]">Aimshala Desk</div>
+                        <img src={logo} alt="logo" className="h-20 w-auto" />
+                        <div className="font-bold text-xl text-[#231f20ad]">Admin Desk</div>
                     </div>
                 </SidebarHeader>
 
